@@ -33,7 +33,7 @@ Ryuu is a complete web system for a single men's hostel in Bengaluru: a public w
 
 - It's a **showcase**: synthetic rooms and people, simulated emails and payments, file uploads switched off.
 - Hosted free on **Vercel** (Hobby plan, Singapore) with a free **Neon** PostgreSQL database. It updates automatically on every push to `main`.
-- Runs with `SHOWCASE_MODE=true`, `DEMO_MODE=true` and `NEXT_PUBLIC_OWNER_BRANDING=true`. A real launch never uses showcase mode: it follows [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), and the production check refuses to start while `SHOWCASE_MODE` is on.
+- Runs with `SHOWCASE_MODE=true` and `DEMO_MODE=true` on Vercel. A real launch never uses showcase mode: it follows [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), and the production check refuses to start while `SHOWCASE_MODE` is on.
 
 ---
 
@@ -101,7 +101,7 @@ Open **http://127.0.0.1:4174**. On Windows you can also double-click **`Launch R
 | `Launch Ryuu.bat` (`npm run dev:phone`) | Preview on your phone over the same trusted Wi-Fi |
 | `Launch Ryuu HTTPS Test.bat` | A private HTTPS test link through a Cloudflare quick tunnel, protected by a one-time key gate, with separate demo data |
 
-> 💡 The Ryuu logo and building image are in `public/images/` (`ryuu-house-logo.png`, `ryuu-logo.webp`, `ryuu-exterior.webp`) and show when `NEXT_PUBLIC_OWNER_BRANDING=true`. Set it to `false` to use neutral placeholders instead.
+> 💡 The Ryuu logo and building image are in `public/images/` (`ryuu-house-logo.png`, `ryuu-logo.webp`, `ryuu-exterior.webp`) and are used by default. Set `NEXT_PUBLIC_PLACEHOLDER_BRANDING=true` to show neutral placeholders instead.
 
 ---
 

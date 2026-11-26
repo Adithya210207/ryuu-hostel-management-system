@@ -10,10 +10,9 @@ const config: NextConfig = {
   outputFileTracingExcludes: { '*': ['./.data/**', './.env*', './backups/**', './.npm-cache/**', './.git/**'] },
   // Version 2: the homepage is the static Onda-based page in public/site/. /classic redirects here.
   async rewrites() {
-    // The hostel owner's logo and building render are not in the public repository. Without them
-    // (NEXT_PUBLIC_OWNER_BRANDING not 'true', e.g. the public demo), their addresses serve neutral placeholders,
-    // which also covers the static homepage in public/site/.
-    const placeholders = process.env.NEXT_PUBLIC_OWNER_BRANDING === 'true' ? [] : [
+    // With NEXT_PUBLIC_PLACEHOLDER_BRANDING=true, the Ryuu logo and building image addresses serve neutral
+    // placeholders instead (this also covers the static homepage in public/site/).
+    const placeholders = process.env.NEXT_PUBLIC_PLACEHOLDER_BRANDING !== 'true' ? [] : [
       { source: '/images/ryuu-house-logo.png', destination: '/images/placeholder/house-logo.png' },
       { source: '/images/ryuu-logo.webp', destination: '/images/placeholder/wordmark.png' },
       { source: '/images/ryuu-logo.png', destination: '/images/placeholder/wordmark.png' },
