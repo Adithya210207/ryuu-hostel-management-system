@@ -10,7 +10,17 @@ const config: NextConfig = {
   outputFileTracingExcludes: { '*': ['./.data/**', './.env*', './backups/**', './.npm-cache/**', './.git/**'] },
   // Version 2: the homepage is the static Onda-based page in public/site/. /classic redirects here.
   async rewrites() {
-    return { beforeFiles: [{ source: '/', destination: '/site/index.html' }], afterFiles: [], fallback: [] };
+    // The hostel owner's logo and building render are not in the public repository. Without them
+    // (NEXT_PUBLIC_OWNER_BRANDING not 'true', e.g. the public demo), their addresses serve neutral placeholders,
+    // which also covers the static homepage in public/site/.
+    const placeholders = process.env.NEXT_PUBLIC_OWNER_BRANDING === 'true' ? [] : [
+      { source: '/images/ryuu-house-logo.png', destination: '/images/placeholder/house-logo.png' },
+      { source: '/images/ryuu-logo.webp', destination: '/images/placeholder/wordmark.png' },
+      { source: '/images/ryuu-logo.png', destination: '/images/placeholder/wordmark.png' },
+      { source: '/images/ryuu-exterior.webp', destination: '/images/photos/inside-balcony.webp' },
+      { source: '/images/ryuu-exterior.png', destination: '/images/photos/inside-balcony.webp' },
+    ];
+    return { beforeFiles: [{ source: '/', destination: '/site/index.html' }, ...placeholders], afterFiles: [], fallback: [] };
   },
   async headers() {
     return [{source:'/sw.js',headers:[{key:'Cache-Control',value:'no-store, max-age=0'},{key:'Service-Worker-Allowed',value:'/'}]}, { source: '/:path*', headers: [
