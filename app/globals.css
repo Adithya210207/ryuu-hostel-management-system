@@ -1,0 +1,26 @@
+/* Shared theme for every page: the homepage's Onda palette and type (Gabarito for display, Onest for text). */
+@font-face{font-family:"Gabarito";src:url('/site/fonts/gabarito-latin.woff2') format('woff2');font-style:normal;font-weight:400 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Gabarito";src:url('/site/fonts/gabarito-latin-ext.woff2') format('woff2');font-style:normal;font-weight:400 900;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Onest";src:url('/site/fonts/onest-latin.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Onest";src:url('/site/fonts/onest-latin-ext.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Onest";src:url('/site/fonts/onest-symbols.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap;unicode-range:U+2190-21FF,U+2600-26FF,U+2700-27BF}
+@font-face{font-family:"Gabarito Fallback";src:local("Arial Black"),local("Arial-Black"),local("Arial Bold");font-weight:800 1000;size-adjust:79.7%;ascent-override:117.9%;descent-override:32.6%;line-gap-override:0%}
+@font-face{font-family:"Gabarito Fallback";src:local("Arial Bold"),local("Arial-BoldMT"),local("Helvetica Bold");font-weight:550 799;size-adjust:92.5%;ascent-override:101.7%;descent-override:28.1%;line-gap-override:0%}
+@font-face{font-family:"Onest Fallback";src:local("Arial"),local("ArialMT"),local("Helvetica");font-weight:100 549;size-adjust:106.2%;ascent-override:91.4%;descent-override:29.2%;line-gap-override:0%}
+@font-face{font-family:"Onest Fallback";src:local("Arial Bold"),local("Arial-BoldMT"),local("Helvetica Bold");font-weight:550 799;size-adjust:101.9%;ascent-override:95.2%;descent-override:30.4%;line-gap-override:0%}
+:root{--jn-ink:#0d0c11;--jn-ink-2:#1f1d26;--jn-paper:#fff;--jn-bg:#efeef4;--jn-muted:#5d5a67;--jn-soft:#aaa7b4;--jn-orange:#ef7d1a;--jn-orange-deep:#a9500a;--jn-indigo:#2e1f7a;--jn-font-body:"Onest","Onest Fallback",Arial,sans-serif;--jn-font-display:"Gabarito","Gabarito Fallback","Arial Black",Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;font-family:var(--jn-font-body);background:var(--jn-bg);color:var(--jn-ink)}button,input,textarea,select{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:not-allowed}a{color:inherit}img{max-width:100%}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--jn-orange);outline-offset:4px}::selection{background:var(--jn-orange);color:var(--jn-ink)}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+/* Simple full-page notices (404, admissions closed, loading). */
+.jn-notice-page{min-height:100svh;display:grid;align-content:center;justify-items:start;gap:22px;padding:clamp(96px,14vh,160px) clamp(16px,3.4vw,48px) clamp(48px,8vh,96px);background:var(--jn-ink);color:#fff;font-family:var(--jn-font-body)}
+.jn-notice-page__brand{position:absolute;top:22px;left:clamp(16px,3.4vw,48px);display:inline-flex;align-items:center;gap:10px;font-family:var(--jn-font-display);font-weight:700;font-size:22px;letter-spacing:-.03em;text-decoration:none}
+.jn-notice-page__brand img{width:52px;height:auto;border-radius:6px}
+.jn-notice-page__eyebrow{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border:1px solid rgba(255,255,255,.3);border-radius:999px;font-size:13px;font-weight:500}
+.jn-notice-page h1{margin:0;font-family:var(--jn-font-display);font-weight:800;font-size:clamp(56px,11vw,168px);line-height:.92;letter-spacing:-.05em;max-width:12ch}
+.jn-dot{display:inline-block;width:.19em;height:.19em;margin-left:.035em;border-radius:999px;background:var(--jn-orange)}
+.jn-notice-page p{margin:0;max-width:34rem;color:var(--jn-soft);font-size:clamp(17px,1.4vw,21px);line-height:1.5}
+.jn-notice-page__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.jn-pill{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px 0 18px;border-radius:999px;background:var(--jn-orange);color:var(--jn-ink);font-weight:600;font-size:16px;text-decoration:none;transition:background .3s,color .3s}
+.jn-pill:before{content:"";width:8px;height:8px;border-radius:999px;background:currentColor}
+.jn-pill:hover{background:#fff}
+.jn-pill.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.jn-pill.ghost:hover{background:#fff;color:var(--jn-ink)}

@@ -1,0 +1,66 @@
+import test,{after} from 'node:test';
+import assert from 'node:assert/strict';
+import {createECDH,randomBytes} from 'node:crypto';
+import webpush from 'web-push';
+process.env.TEST_DATABASE='memory';process.env.DATABASE_URL='';process.env.DEMO_MODE='true';
+import {db} from '../server/db';
+import {createAccount,createSession,logout} from '../server/auth';
+import {saveSubscription,subscriptionStatus,removeSubscription,enqueuePush,dispatchPush,queuePushTest,validPushEndpoint,pushPayload} from '../server/push';
+import {getSnapshot,executeAction} from '../server/domain';
+import type {Notification} from '../shared/domain';
+after(()=>db.close());
+test('push refuses arbitrary endpoints, credentials, ports and host-name tricks',()=>{
+ for(const url of ['http://fcm.googleapis.com/x','https://127.0.0.1/x','https://fcm.googleapis.com.evil.test/x','https://user:pass@fcm.googleapis.com/x','https://fcm.googleapis.com:444/x'])assert.equal(validPushEndpoint(url),false,url);
+ assert.equal(validPushEndpoint('https://fcm.googleapis.com/fcm/send/synthetic'),true);
+ assert.equal(validPushEndpoint('https://web.push.apple.com/synthetic'),true);
+});
+test('push isolates accounts and sessions, queues only new notices, retries safely and expires devices',async t=>{
+ const keys=webpush.generateVAPIDKeys();process.env.WEB_PUSH_ENABLED='true';process.env.VAPID_PUBLIC_KEY=keys.publicKey;process.env.VAPID_PRIVATE_KEY=keys.privateKey;process.env.VAPID_SUBJECT='mailto:synthetic@example.test';
+ const user=await createAccount({name:'Push Resident',email:'push@example.test',phone:'+919000099931',password:'Synthetic Password 2026!'},'resident');
+ const other=await createAccount({name:'Other Resident',email:'otherpush@example.test',phone:'+919000099932',password:'Synthetic Password 2026!'},'resident');
+ const token=await createSession(user.id),otherToken=await createSession(other.id);
+ const ecdh=createECDH('prime256v1');ecdh.generateKeys();const sub={endpoint:'https://fcm.googleapis.com/fcm/send/synthetic',keys:{p256dh:ecdh.getPublicKey().toString('base64url'),auth:randomBytes(16).toString('base64url')}};
+ await saveSubscription(user,token,sub);assert.equal(await subscriptionStatus(user,token,sub.endpoint),true);
+ await assert.rejects(()=>saveSubscription(other,otherToken,sub),/another account/);
+ await assert.rejects(()=>saveSubscription(other,token,{...sub,endpoint:sub.endpoint+'2'}),/sign in/);
+ await removeSubscription(other,sub.endpoint);assert.equal(await subscriptionStatus(user,token,sub.endpoint),true);
+ await assert.rejects(()=>queuePushTest(other,otherToken,sub.endpoint),/Enable notifications/);
+ const notice={id:'old-notice',userId:user.id,title:'Private title',body:'Private Aadhaar or payment text',createdAt:'2020-01-01T00:00:00Z',eventKey:'message:test',link:'/portal',delivery:'visible',channel:'website',attempts:0} as Notification;
+ await db.transaction(tx=>enqueuePush(tx,[notice]));assert.equal((await db.query('SELECT * FROM push_deliveries')).rows.length,0);
+ const fresh={...notice,id:'fresh',createdAt:new Date(Date.now()+1000).toISOString()};
+ await db.transaction(tx=>enqueuePush(tx,[fresh,fresh,{...fresh,id:'other',userId:other.id}]));assert.equal((await db.query('SELECT * FROM push_deliveries')).rows.length,1);
+ let fail=503;
+ const send=t.mock.method(webpush,'sendNotification',async(_subscription:any,payload:any)=>{assert.equal(JSON.parse(payload).url,'/portal?view=notifications');assert.ok(!payload.includes('Private'));if(fail)throw Object.assign(new Error('secret provider response'),{statusCode:fail});return {} as any;});
+ await dispatchPush();assert.equal((await db.query('SELECT status FROM push_deliveries')).rows[0].status,'retry');
+ await dispatchPush();assert.equal(send.mock.callCount(),1);
+ await db.query("UPDATE push_deliveries SET next_attempt_at=NOW()-INTERVAL '1 minute'");fail=0;
+ await Promise.all([dispatchPush(),dispatchPush()]);assert.equal(send.mock.callCount(),2);assert.equal((await db.query('SELECT status FROM push_deliveries')).rows[0].status,'accepted');
+ await queuePushTest(user,token,sub.endpoint);fail=410;await dispatchPush();assert.equal(await subscriptionStatus(user,token,sub.endpoint),false);
+ const result=(await db.query("SELECT status,error FROM push_deliveries WHERE notification_id LIKE 'test-%'")).rows[0];assert.equal(result.status,'expired');assert.equal(result.error,'Browser subscription expired.');
+ await saveSubscription(user,token,sub);await queuePushTest(user,token,sub.endpoint);
+ await logout(new Request('http://localhost',{headers:{cookie:`ryuu_session=${token}`}}));fail=0;const calls=send.mock.callCount();await dispatchPush();assert.equal(send.mock.callCount(),calls);
+ assert.equal((await db.query("SELECT COUNT(*) AS n FROM push_subscriptions WHERE user_id=$1",[user.id])).rows[0].n,0);
+ assert.ok((await db.query("SELECT id FROM push_deliveries WHERE status='cancelled'")).rows.length>0);
+ process.env.WEB_PUSH_ENABLED='false';
+});
+test('notification payload never embeds personal data or dynamic destinations',()=>{
+ const data=JSON.parse(pushPayload('message-123'));assert.equal(data.title,'Ryuu');assert.equal(data.url,'/portal?view=notifications');assert.deepEqual(Object.keys(data).sort(),['body','tag','title','url']);
+});
+
+test('a real portal message creates recipient history and one durable phone job in the same transaction',async()=>{
+ process.env.WEB_PUSH_ENABLED='true';
+ const recipient=await createAccount({name:'Integrated Recipient',email:'integrated@example.test',phone:'+919000099933',password:'Synthetic Password 2026!'},'resident');
+ const admin=await createAccount({name:'Integrated Admin',email:'integratedadmin@example.test',phone:'+919000099934',password:'Synthetic Password 2026!'},'admin');
+ await getSnapshot(recipient);await getSnapshot(admin);const token=await createSession(recipient.id);
+ const ecdh=createECDH('prime256v1');ecdh.generateKeys();
+ await saveSubscription(recipient,token,{endpoint:'https://fcm.googleapis.com/fcm/send/integration',keys:{p256dh:ecdh.getPublicKey().toString('base64url'),auth:randomBytes(16).toString('base64url')}});
+ await executeAction(admin,'message.send',{ownerId:recipient.id,body:'Synthetic integration message'});
+ const snapshot=await getSnapshot(recipient);assert.equal(snapshot.notifications.length,1);
+ const jobs=(await db.query('SELECT * FROM push_deliveries WHERE user_id=$1',[recipient.id])).rows;
+ assert.equal(jobs.length,1);assert.equal(jobs[0].notification_id,snapshot.notifications[0].id);assert.equal(jobs[0].status,'queued');
+ assert.equal((await getSnapshot(admin)).notifications.length,0);
+ await executeAction(recipient,'notification.read',{notificationId:snapshot.notifications[0].id});
+ assert.ok((await getSnapshot(recipient)).notifications[0].readAt);
+ assert.equal((await db.query('SELECT * FROM push_deliveries WHERE user_id=$1',[recipient.id])).rows.length,1);
+ process.env.WEB_PUSH_ENABLED='false';
+});

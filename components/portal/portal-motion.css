@@ -1,0 +1,70 @@
+/* Short, one-time feedback for the portal. No scrolling or input layout changes. */
+.jn-portal-motion .jn-welcome-art > span:first-child { animation: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .jn-auth-shell.jn-portal-motion .jn-auth-story-content > :is(.jn-eyebrow, h1, p, .jn-story-features),
+  .jn-auth-shell.jn-portal-motion .jn-auth-heading {
+    animation: jn-task-enter 360ms cubic-bezier(.2,.7,.2,1) both;
+  }
+  .jn-auth-shell.jn-portal-motion .jn-auth-story-content > h1 { animation-delay: 35ms; }
+  .jn-auth-shell.jn-portal-motion .jn-auth-story-content > p { animation-delay: 70ms; }
+  .jn-auth-shell.jn-portal-motion .jn-auth-story-content > .jn-story-features { animation-delay: 100ms; }
+  .jn-auth-shell.jn-portal-motion .jn-story-line {
+    transform-origin: left;
+    animation: jn-task-line 450ms cubic-bezier(.2,.7,.2,1) both;
+  }
+
+  /* Retune the existing page/stat entrances instead of layering another wrapper. */
+  .jn-portal-shell.jn-portal-motion .jn-page-enter { animation: jn-task-enter 220ms ease-out both; }
+  .jn-portal-shell.jn-portal-motion .jn-stat { animation: jn-task-enter 300ms cubic-bezier(.2,.7,.2,1) both; }
+  .jn-portal-shell.jn-portal-motion .jn-stat:nth-child(2) { animation-delay: 30ms; }
+  .jn-portal-shell.jn-portal-motion .jn-stat:nth-child(3) { animation-delay: 60ms; }
+  .jn-portal-shell.jn-portal-motion .jn-stat:nth-child(4) { animation-delay: 90ms; }
+  .jn-portal-shell.jn-portal-motion :is(.jn-welcome-card, .jn-schedule-card, .jn-selection-card),
+  .jn-portal-shell.jn-portal-motion .jn-dashboard-primary > .jn-panel,
+  .jn-portal-shell.jn-portal-motion .jn-dashboard-secondary > .jn-panel {
+    animation: jn-task-enter 320ms cubic-bezier(.2,.7,.2,1) both;
+    animation-delay: 45ms;
+  }
+  .jn-portal-shell.jn-portal-motion .jn-welcome-art > span:first-child {
+    animation: jn-task-art 420ms cubic-bezier(.2,.7,.2,1) both;
+  }
+  .jn-portal-motion .jn-form-steps li > span {
+    transition: color 160ms, background-color 160ms, border-color 160ms;
+  }
+  .jn-portal-motion .jn-form-steps li.active > span { animation: jn-task-selected 180ms ease-out; }
+  .jn-portal-motion :is(.jn-segmented, .jn-tabs) button {
+    transition: color 160ms, border-color 160ms, background-color 160ms;
+  }
+  .jn-portal-motion :is(.jn-segmented, .jn-tabs) button.active { animation: jn-task-tab 180ms ease-out; }
+  .jn-portal-motion .jn-nav-arrow { animation: jn-task-arrow 180ms ease-out; }
+  .jn-portal-motion .jn-notification-popover { animation: jn-task-enter 160ms ease-out; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .jn-portal-motion :is(.jn-demo-access button, .jn-action-row, .jn-communication-totals > button) {
+      transition: translate 160ms, border-color 160ms, background-color 160ms;
+    }
+    .jn-portal-motion :is(.jn-demo-access button, .jn-communication-totals > button):not(:disabled):hover { translate: 0 -2px; }
+    .jn-portal-motion .jn-action-row:hover { translate: 2px 0; }
+    .jn-portal-motion .jn-auth-actions .jn-button > svg { transition: translate 160ms; }
+    .jn-portal-motion .jn-auth-actions .jn-button:not(:disabled):hover > svg { translate: 2px 0; }
+  }
+}
+
+@keyframes jn-task-enter { from { opacity: .65; translate: 0 7px; } to { opacity: 1; translate: 0 0; } }
+@keyframes jn-task-line { from { transform: scaleX(.2); opacity: .35; } to { transform: scaleX(1); opacity: 1; } }
+@keyframes jn-task-selected { from { scale: .92; } to { scale: 1; } }
+@keyframes jn-task-tab { from { opacity: .65; } to { opacity: 1; } }
+@keyframes jn-task-arrow { from { opacity: .5; translate: -4px 0; } to { opacity: 1; translate: 0 0; } }
+@keyframes jn-task-art { from { opacity: .45; rotate: -8deg; } to { opacity: 1; rotate: 0deg; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .jn-portal-motion *, .jn-portal-motion *::before, .jn-portal-motion *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  .jn-portal-motion *, .jn-portal-motion *::before, .jn-portal-motion *::after { animation: none !important; }
+}

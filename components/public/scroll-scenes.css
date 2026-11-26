@@ -1,0 +1,117 @@
+/* Reversible motion follows the native scrollbar, with no smoothing delay.
+   Static content is the baseline when JavaScript or motion is disabled. */
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind] {
+  --scene-entry: 1;
+  --scene-drift: 0;
+  --scene-distance: 1;
+  --scene-rest: calc(1 - var(--scene-entry));
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition: none;
+}
+
+/* These parent scenes replace their children's previous timed entrance. */
+.jn-site[data-scroll-scenes="on"] :is([data-scroll-kind="room-intro"], [data-scroll-kind="portal"], [data-scroll-kind="contact-copy"]) .jn-reveal {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition: none;
+}
+
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="portrait"] {
+  translate: 0 calc((var(--scene-rest) * 48px + var(--scene-drift) * 22px) * var(--scene-distance));
+  rotate: calc(var(--scene-rest) * -2deg);
+  scale: calc(1 - var(--scene-rest) * .05);
+  transform-origin: 50% 70%;
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="copy"] {
+  translate: calc(var(--scene-rest) * 42px * var(--scene-distance)) calc(var(--scene-drift) * -18px * var(--scene-distance));
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="heading"] {
+  translate: 0 calc(var(--scene-rest) * 48px * var(--scene-distance));
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="gallery"] {
+  translate: 0 calc((var(--scene-rest) * 58px + var(--scene-drift) * var(--scene-direction) * 22px) * var(--scene-distance));
+  scale: calc(1 - var(--scene-rest) * .06);
+  rotate: calc(var(--scene-rest) * var(--scene-direction) * 1.5deg);
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="gallery"] figcaption {
+  translate: 0 calc(var(--scene-rest) * 16px * var(--scene-distance));
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="tile"] {
+  translate: 0 calc(var(--scene-rest) * 40px * var(--scene-distance));
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="tile"] > div > .jn-icon {
+  rotate: calc(var(--scene-rest) * -20deg);
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="room-intro"] {
+  translate: calc(var(--scene-rest) * -48px * var(--scene-distance)) 0;
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="room"] {
+  translate: calc(var(--scene-rest) * 80px * var(--scene-distance)) 0;
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="room"]::after,
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="question"]::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--jn-orange);
+  transform: scaleX(var(--scene-entry));
+  transform-origin: left;
+  opacity: .5;
+  pointer-events: none;
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="room"] h3 > span {
+  translate: 0 calc(var(--scene-rest) * 18px * var(--scene-distance));
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="portal"] {
+  scale: calc(1 - var(--scene-rest) * .08);
+  border-radius: calc(var(--scene-rest) * 70px);
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="portal"] h2 {
+  translate: 0 calc(var(--scene-rest) * 30px * var(--scene-distance));
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="question"] {
+  position: relative;
+  translate: 0 calc(var(--scene-rest) * 26px * var(--scene-distance));
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="contact-copy"] {
+  translate: 0 calc(var(--scene-rest) * 44px * var(--scene-distance));
+}
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="building"] {
+  translate: 0 calc((var(--scene-rest) * 40px + var(--scene-drift) * -20px) * var(--scene-distance));
+  rotate: calc(2deg + var(--scene-rest) * 3deg);
+  scale: calc(1 - var(--scene-rest) * .04);
+}
+
+/* Keyboard focus and open answers always take precedence over decoration. */
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind]:focus-within,
+.jn-site[data-scroll-scenes="on"] [data-scroll-kind="question"][open] {
+  translate: none;
+  rotate: none;
+  scale: none;
+}
+
+@media (max-width: 700px), (max-height: 600px) {
+  .jn-site[data-scroll-scenes="on"] [data-scroll-kind] { --scene-distance: .4; }
+  .jn-site[data-scroll-scenes="on"] :is([data-scroll-kind="room-intro"], [data-scroll-kind="room"], [data-scroll-kind="copy"]) {
+    translate: 0 calc(var(--scene-rest) * 24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jn-site [data-scroll-kind], .jn-site [data-scroll-kind] figcaption, .jn-site [data-scroll-kind] h2,
+  .jn-site [data-scroll-kind] h3 > span, .jn-site [data-scroll-kind] > div > .jn-icon {
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+  }
+}
+
+@media print {
+  .jn-site [data-scroll-kind] { translate: none !important; rotate: none !important; scale: none !important; }
+}

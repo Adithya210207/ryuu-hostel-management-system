@@ -1,0 +1,1499 @@
+<!doctype html>
+<!--
+  Ryuu homepage, Version 2.
+  Layout and motion adapted from the free Onda template by 8B: https://8b.com/templates/onda/
+  Source: https://github.com/8bsite/design-studio-website-template
+  MIT License (code), see /site/ONDA-LICENSE.txt · Fonts: Gabarito and Onest (OFL)
+  Photo slots and the prompts for generating them: PHOTO-PROMPTS.md in the project root.
+-->
+<html lang="en">
+<head>
+<style>html{scrollbar-width:none}html::-webkit-scrollbar{display:none}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ryuu — Men's PG hostel in Koramangala, Bengaluru</title>
+<meta name="description" content="Ryuu is a air-conditioned men's PG hostel in Koramangala, Bengaluru. 3, 4 and 5 sharing rooms (all air-conditioned) with balconies, soft water, homemade food, a gym, 24/7 security and car and bike parking. Opening shortly.">
+<meta name="generator" content="8B Templates">
+<meta name="theme-color" content="#0d0c11">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ryuu — Men's PG hostel in Bengaluru">
+<meta property="og:description" content="An air-conditioned men's PG hostel in Koramangala, Bengaluru. Opening shortly.">
+<meta property="og:image" content="/images/ryuu-exterior.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png?v=house-1">
+<link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png?v=house-1">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" href="/site/fonts/gabarito-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/site/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* latin-ext */
+@font-face {
+  font-family: 'Gabarito';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(/site/fonts/gabarito-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Gabarito';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(/site/fonts/gabarito-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/site/fonts/onest-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/site/fonts/onest-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* math */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/site/fonts/onest-greek.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/site/fonts/onest-symbols.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/site/fonts/onest-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/site/fonts/onest-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/site/fonts/onest-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style data-8b-part="layers">
+@layer tokens, base, atoms, layout, sections, scenes;
+</style>
+<style data-8b-part="tokens">
+@layer tokens {
+:root {
+  --color-1: #0d0c11;
+  --color-2: #ffffff;
+  --color-3: #ef7d1a;
+  --color-8: #2e1f7a;
+  --color-9: #a9500a;
+  --color-4: #efeef4;
+  --color-5: #aaa7b4;
+  --color-6: #5d5a67;
+  --color-7: #1f1d26;
+  --font-1: "Gabarito", "Gabarito Fallback", "Arial Black", Arial, sans-serif;
+  --font-2: "Onest", "Onest Fallback", Arial, sans-serif;
+  --radius-1: 28px;
+  --radius-2: 999px;
+  --radius-3: 14px;
+  --shadow-1: 0 -18px 50px color-mix(in srgb, var(--color-1) 45%, transparent);
+  --shadow-2: 0 2px 0 var(--color-3);
+  --shadow-3: 0 0 0 2px var(--color-1);
+  --space-1: clamp(16px, 3.4vw, 48px);
+  --space-2: clamp(96px, 15vh, 200px);
+}
+}
+</style>
+<style data-8b-part="base">
+@font-face { font-family: "Gabarito Fallback"; src: local("Arial Black"), local("Arial-Black"), local("Arial Bold"); font-weight: 800 1000; size-adjust: 79.7%; ascent-override: 117.9%; descent-override: 32.6%; line-gap-override: 0%; }
+@font-face { font-family: "Gabarito Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"); font-weight: 550 799; size-adjust: 92.5%; ascent-override: 101.7%; descent-override: 28.1%; line-gap-override: 0%; }
+@font-face { font-family: "Onest Fallback"; src: local("Arial"), local("ArialMT"), local("Helvetica"); font-weight: 100 549; size-adjust: 106.2%; ascent-override: 91.4%; descent-override: 29.2%; line-gap-override: 0%; }
+@font-face { font-family: "Onest Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"); font-weight: 550 799; size-adjust: 101.9%; ascent-override: 95.2%; descent-override: 30.4%; line-gap-override: 0%; }
+@layer base {
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+body { margin: 0; background: var(--color-2); color: var(--color-1); overflow-x: clip; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, h4, p, ul, ol, figure, blockquote, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--color-3); outline-offset: 3px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+main { overflow-x: clip; }
+.skip { position: fixed; left: var(--space-1); top: 12px; z-index: 100; padding: 10px 16px; border-radius: var(--radius-2); background: var(--color-2); color: var(--color-1); font-family: var(--font-2); font-size: 15px; font-weight: 600; text-decoration: none; transform: translateY(-160%); }
+.skip:focus-visible { transform: none; }
+}
+</style>
+<style data-8b-part="system">
+@layer atoms {
+.m-text { font-family: var(--font-2); font-size: 17px; font-weight: 400; line-height: 1.55; letter-spacing: 0; text-transform: none; font-style: normal; }
+.m-text-2 { font-family: var(--font-1); font-size: min(40vw, calc((100vw - 2 * var(--space-1)) / (var(--len, 5) * 0.47))); font-weight: 800; line-height: 0.8; letter-spacing: -0.065em; text-transform: none; font-style: normal; }
+.m-text-3 { font-family: var(--font-1); font-size: clamp(50px, 9.2vw, 150px); font-weight: 800; line-height: 0.88; letter-spacing: -0.055em; text-transform: none; font-style: normal; }
+.m-text-4 { font-family: var(--font-1); font-size: clamp(30px, 3.9vw, 58px); font-weight: 700; line-height: 0.96; letter-spacing: -0.04em; text-transform: none; font-style: normal; }
+.m-text-5 { font-family: var(--font-2); font-size: clamp(19px, 1.7vw, 25px); font-weight: 500; line-height: 1.28; letter-spacing: -0.015em; text-transform: none; font-style: normal; }
+.m-text-6 { font-family: var(--font-2); font-size: 13px; font-weight: 600; line-height: 1.3; letter-spacing: 0.01em; text-transform: none; font-style: normal; }
+.m-text-7 { font-family: var(--font-1); font-size: clamp(22px, 2.05vw, 30px); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; text-transform: none; font-style: normal; }
+.m-dot { display: inline-block; width: 0.19em; height: 0.19em; margin-left: 0.035em; border-radius: var(--radius-2); background: var(--color-3); vertical-align: baseline; }
+.m-btn { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px 0 18px; overflow: hidden; border: 0; border-radius: var(--radius-2); background: var(--color-3); color: var(--color-2); font-family: var(--font-2); font-size: 16px; font-weight: 600; line-height: 1; letter-spacing: -0.01em; text-decoration: none; cursor: pointer; }
+.m-btn::before { content: ""; width: 8px; height: 8px; flex: none; border-radius: var(--radius-2); background: currentColor; }
+.m-btn::after { content: ""; position: absolute; z-index: -1; left: 22px; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: var(--radius-2); background: var(--color-1); transform: scale(0); transition: transform .5s cubic-bezier(.7, 0, .2, 1); }
+.m-btn__label { position: relative; }
+@media (hover: hover) { .m-btn:hover::after { transform: scale(60); } }
+.m-btn-2 { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px 0 18px; overflow: hidden; border: 0; border-radius: var(--radius-2); background: var(--color-2); color: var(--color-1); font-family: var(--font-2); font-size: 16px; font-weight: 600; line-height: 1; letter-spacing: -0.01em; text-decoration: none; cursor: pointer; transition: color .35s; }
+.m-btn-2::before { content: ""; width: 8px; height: 8px; flex: none; border-radius: var(--radius-2); background: var(--color-3); }
+.m-btn-2::after { content: ""; position: absolute; z-index: -1; left: 22px; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: var(--radius-2); background: var(--color-1); transform: scale(0); transition: transform .5s cubic-bezier(.7, 0, .2, 1); }
+.m-btn-2 .m-btn__label { position: relative; }
+@media (hover: hover) { .m-btn-2:hover { color: var(--color-2); } .m-btn-2:hover::after { transform: scale(60); } }
+.m-link { display: inline-flex; align-items: center; gap: 0.45em; font-family: var(--font-2); font-size: clamp(17px, 1.45vw, 21px); font-weight: 600; line-height: 1.2; letter-spacing: -0.015em; text-decoration: none; }
+.m-link__label { position: relative; padding-block: 3px; }
+.m-link__label::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: var(--radius-2); background: currentColor; transform: scaleX(0); transform-origin: 0 50%; transition: transform .45s cubic-bezier(.7, 0, .2, 1); }
+.m-link__arrow { width: 0.8em; height: 0.8em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; transition: transform .45s cubic-bezier(.7, 0, .2, 1); }
+@media (hover: hover) { .m-link:hover .m-link__label::after { transform: scaleX(1); } .m-link:hover .m-link__arrow { transform: translateX(4px); } }
+.m-link-2 { position: relative; display: inline-block; padding-block: 4px; font-family: var(--font-2); font-size: 15px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em; text-decoration: none; }
+.m-link-2::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px; border-radius: var(--radius-2); background: currentColor; transform: scaleX(0); transform-origin: 0 50%; transition: transform .45s cubic-bezier(.7, 0, .2, 1); }
+@media (hover: hover) { .m-link-2:hover::after { transform: scaleX(1); } }
+.m-icon { position: relative; isolation: isolate; display: inline-grid; place-items: center; width: 48px; height: 48px; flex: none; padding: 0; border: 1.5px solid currentColor; border-radius: var(--radius-2); background: transparent; color: inherit; cursor: pointer; transition: color .35s; }
+.m-icon::after { content: ""; position: absolute; inset: 3px; z-index: -1; border-radius: var(--radius-2); background: var(--color-3); transform: scale(0); transition: transform .45s cubic-bezier(.7, 0, .2, 1); }
+.m-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+@media (hover: hover) { .m-icon:hover { color: var(--color-2); } .m-icon:hover::after { transform: scale(1); } }
+.m-surface { border-radius: var(--radius-1); background: var(--color-4); color: var(--color-1); }
+.m-badge { display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px; border: 1px solid color-mix(in srgb, currentColor 32%, transparent); border-radius: var(--radius-2); font-family: var(--font-2); font-size: 13px; font-weight: 500; line-height: 1; letter-spacing: 0; text-transform: none; font-style: normal; white-space: nowrap; }
+.m-field { display: block; width: 100%; min-height: 48px; padding: 10px 0; border: 0; border-bottom: 1.5px solid color-mix(in srgb, currentColor 40%, transparent); border-radius: 0; background: transparent; color: inherit; font-family: var(--font-2); font-size: 17px; font-weight: 400; line-height: 1.4; letter-spacing: 0; text-transform: none; font-style: normal; }
+.m-field:focus-visible { outline: none; border-bottom-color: var(--color-3); box-shadow: var(--shadow-2); }
+textarea.m-field { min-height: 112px; resize: vertical; }
+}
+</style>
+<style data-8b-part="section:navigation">
+@layer sections {
+#navigation { position: fixed; z-index: 40; inset: 0 0 auto; display: flex; align-items: center; gap: 12px; padding: 14px var(--space-1); pointer-events: none; }
+#navigation > * { pointer-events: auto; }
+#navigation .nav__brand { display: inline-flex; align-items: baseline; min-height: 48px; padding: 9px 18px 0; border-radius: var(--radius-2); background: var(--color-1); color: var(--color-2); font-family: var(--font-1); font-size: 25px; font-weight: 800; line-height: 1.2; letter-spacing: -0.05em; text-decoration: none; }
+#navigation .nav__links { margin-inline: auto; padding: 0 8px; border-radius: var(--radius-2); background: var(--color-1); color: var(--color-2); }
+#navigation .nav__links ul { display: flex; }
+#navigation .nav__cta { box-shadow: var(--shadow-3); }
+#navigation .nav__links a { display: block; margin: 0 14px; padding-block: 14px; }
+#navigation .nav__links a::after { bottom: 10px; }
+#navigation .nav__menu { display: none; margin-left: auto; }
+#navigation .menu { position: fixed; inset: 0; z-index: 60; display: grid; grid-template-rows: auto 1fr auto; padding: 14px var(--space-1) 32px; background: var(--color-1); color: var(--color-2); overflow-y: auto; }
+#navigation .menu[hidden] { display: none; }
+#navigation .menu__top { display: flex; justify-content: flex-end; }
+#navigation .menu__list { align-self: center; display: grid; gap: 6px; }
+#navigation .menu__list a { font-family: var(--font-1); font-size: clamp(42px, 13vw, 72px); font-weight: 800; line-height: 1; letter-spacing: -0.05em; text-decoration: none; }
+#navigation .menu__foot { color: var(--color-5); }
+@media (max-width: 899px) {
+  #navigation .nav__links, #navigation .nav__cta { display: none; }
+  #navigation .nav__menu { display: inline-flex; }
+}
+}
+</style>
+<style data-8b-part="section:hero">
+@layer sections {
+#hero { --ap: min(74vw, 44svh); position: relative; z-index: 3; display: grid; grid-template-rows: 1fr auto; min-height: max(100svh, 560px); padding: 0 var(--space-1); background: var(--color-1); color: var(--color-2); overflow: clip visible; }
+#hero .hero__intro { display: grid; justify-items: start; align-content: start; gap: 18px; max-width: 32rem; padding-top: clamp(92px, 14svh, 150px); }
+#hero .hero__lead { color: var(--color-2); }
+#hero .hero__title { position: static; align-self: end; padding-bottom: clamp(18px, 5svh, 52px); white-space: nowrap; }
+#hero .hero__word, #hero .hero__mask, #hero .hero__glyphs { display: inline-block; }
+#hero .hero__period { position: static; display: inline-block; width: 0.19em; height: 0.19em; margin-left: 0.035em; border-radius: var(--radius-2); background: var(--color-3); vertical-align: baseline; }
+#hero .hero__stage { position: absolute; left: calc(50% - var(--ap) / 2); top: calc(57% - var(--ap) / 2); width: var(--ap); height: var(--ap); font-size: 16px; line-height: 0; }
+#hero .hero__aperture { position: absolute; inset: 0; display: block; overflow: hidden; border-radius: var(--radius-2); background: var(--color-3); }
+#hero .hero__img { width: 100%; height: 100%; object-fit: cover; }
+#hero .hero__tint { position: absolute; inset: 0; background: var(--color-3); opacity: 0; }
+#hero .hero__orbit { position: absolute; inset: -9%; display: block; border-radius: var(--radius-2); border: 1px solid color-mix(in srgb, var(--color-2) 16%, transparent); }
+#hero .hero__moon { position: absolute; left: 50%; top: 0; width: 9%; height: 9%; margin: -4.5% 0 0 -4.5%; border-radius: var(--radius-2); background: var(--color-3); }
+@media (min-width: 900px) and (orientation: landscape) {
+  #hero { --ap: min(36vw, 60svh); }
+  #hero .hero__title { font-size: min(26.5vw, 43svh); }
+  #hero .hero__period { position: relative; background: transparent; }
+  #hero .hero__stage { left: 0; top: auto; bottom: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #hero .hero__mask { animation: hero-mask .95s linear backwards; }
+  #hero .hero__glyphs { animation: hero-rise .95s cubic-bezier(.16, .84, .24, 1) backwards; }
+  #hero .hero__stage { transform-origin: 50% 50%; animation: hero-swell 1.1s cubic-bezier(.2, .9, .25, 1.12) backwards; }
+  #hero .hero__intro { animation: hero-lift .9s .12s cubic-bezier(.16, .84, .24, 1) backwards; }
+  #hero .hero__img { animation: hero-turn 46s linear infinite; }
+  #hero .hero__orbit { animation: hero-orbit 13s linear infinite; }
+  #hero.is-offscreen .hero__img, #hero.is-offscreen .hero__orbit { animation-play-state: paused; }
+  @media (min-width: 900px) and (orientation: landscape) { #hero .hero__stage { transform-origin: 0 100%; animation-name: hero-inflate; } }
+  @keyframes hero-mask { from, to { clip-path: inset(-40% -8% 0 -8%); } }
+  @keyframes hero-rise { from { transform: translateY(92%); } }
+  @keyframes hero-swell { from { transform: scale(.72); } }
+  @keyframes hero-inflate { from { transform: scale(.36); } }
+  @keyframes hero-lift { from { transform: translateY(26px); } }
+  @keyframes hero-turn { to { transform: rotate(360deg); } }
+  @keyframes hero-orbit { to { transform: rotate(360deg); } }
+}
+}
+</style>
+<style data-8b-part="section:statement">
+@layer sections {
+#statement { position: relative; padding: var(--space-2) var(--space-1) calc(var(--space-2) * 0.9); background: var(--color-2); }
+#statement .statement__title { font-size: clamp(40px, 8.7vw, 140px); }
+#statement .statement__line { display: block; }
+#statement .statement__body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; margin-top: clamp(56px, 11vh, 120px); }
+#statement .statement__lead { max-width: 36rem; }
+#statement .statement__index ul { display: grid; gap: 12px; }
+@media (min-width: 900px) {
+  #statement .statement__body { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); align-items: start; }
+  #statement .statement__lead { font-size: clamp(24px, 2.35vw, 34px); line-height: 1.16; letter-spacing: -0.025em; }
+}
+}
+</style>
+<style data-8b-part="section:work">
+@layer sections {
+#work { position: relative; color: var(--color-2); }
+#work .work__plate { position: absolute; inset: 0 0 -2px; background: var(--color-1); }
+#work .work__stage { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: clamp(28px, 4vh, 48px); padding: var(--space-2) var(--space-1); }
+#work .work__head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 40px; }
+#work .work__lead { max-width: 25rem; color: var(--color-5); }
+#work .work__track { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+#work .case { position: relative; display: block; overflow: hidden; border-radius: var(--radius-1); background: var(--color-7); aspect-ratio: 4 / 5; }
+#work .case__media { position: absolute; inset: 0; overflow: hidden; }
+#work .case__img { position: absolute; top: 0; left: -7%; width: 114%; max-width: none; height: 100%; object-fit: cover; }
+#work .case__media::after { content: ""; position: absolute; inset: 40% 0 0; background: linear-gradient(to top, color-mix(in srgb, var(--color-1) 82%, transparent), transparent); }
+#work .case__tag { position: absolute; left: clamp(18px, 2vw, 28px); top: clamp(18px, 2vw, 28px); background: color-mix(in srgb, var(--color-1) 62%, transparent); }
+#work .case__text { position: absolute; left: clamp(18px, 2.4vw, 36px); right: clamp(18px, 2.4vw, 36px); bottom: clamp(18px, 2.4vw, 36px); display: grid; gap: 10px; }
+#work .case__line { max-width: 30rem; color: var(--color-2); }
+@media (min-width: 700px) {
+  #work .work__track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #work .case { aspect-ratio: 16 / 11; }
+  #work .case:last-child:nth-child(odd) { grid-column: span 2; aspect-ratio: 16 / 6.5; }
+}
+}
+</style>
+<style data-8b-part="scene-style:work">
+@layer scenes {
+@media (prefers-reduced-motion: no-preference) {
+  #work.is-track { height: calc(100svh + var(--run, 0px)); }
+  #work.is-track .work__stage { position: sticky; top: 0; height: 100svh; min-height: 560px; padding-top: clamp(84px, 13svh, 120px); padding-bottom: clamp(24px, 5svh, 48px); grid-template-rows: auto minmax(0, 1fr); overflow: clip; }
+  #work.is-track .work__window { display: flex; align-items: center; min-height: 0; transform-origin: 0 50%; }
+  #work.is-track .work__track { display: flex; gap: clamp(14px, 1.6vw, 24px); width: max-content; height: min(100%, 64svh); }
+  #work.is-track .case { width: auto; height: 100%; aspect-ratio: 4 / 5; flex: none; }
+  @media (min-width: 700px) { #work.is-track .case { aspect-ratio: 16 / 10.5; } }
+}
+}
+</style>
+<style data-8b-part="section:again">
+@layer sections {
+#again { position: relative; background: var(--color-1); color: var(--color-2); }
+#again .again__stage { position: relative; padding: calc(var(--space-2) * 0.7) var(--space-1) var(--space-2); }
+#again .again__head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 40px; }
+#again .again__lead { max-width: 27rem; color: var(--color-5); }
+#again .again__swing { margin-top: clamp(40px, 7vh, 72px); }
+#again .again__wheel { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+#again .partner__card { position: relative; display: block; overflow: hidden; border-radius: var(--radius-1); background: var(--color-7); aspect-ratio: 4 / 5; }
+#again .partner__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#again .partner__card::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(to top, color-mix(in srgb, var(--color-1) 86%, transparent), transparent); }
+#again .partner__text { position: absolute; z-index: 1; left: clamp(16px, 1.8vw, 26px); right: clamp(16px, 1.8vw, 26px); bottom: clamp(16px, 1.8vw, 26px); display: grid; justify-items: start; gap: 10px; }
+#again .partner__year { background: color-mix(in srgb, var(--color-1) 62%, transparent); }
+#again .partner__name { font-size: clamp(28px, 2.6vw, 40px); }
+#again .partner__line { color: var(--color-2); }
+@media (min-width: 640px) { #again .again__wheel { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { #again .again__wheel { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+}
+</style>
+<style data-8b-part="scene-style:again">
+@layer scenes {
+@media (prefers-reduced-motion: no-preference) {
+  #again.is-wheel { height: calc(100svh + var(--spin, 0px)); }
+  #again.is-wheel .again__stage { position: sticky; top: 0; height: 100svh; min-height: 560px; overflow: clip; padding-top: clamp(84px, 13svh, 120px); }
+  #again.is-wheel .again__swing { position: absolute; left: 50%; top: calc(var(--arc-top) + var(--radius)); width: 0; height: 0; margin: 0; }
+  #again.is-wheel .again__wheel { position: absolute; left: 0; top: 0; display: block; width: 0; height: 0; }
+  #again.is-wheel .partner { position: absolute; left: 0; top: 0; width: 0; height: 0; rotate: calc(var(--i) * var(--step)); }
+  #again.is-wheel .partner__card { position: absolute; left: calc(var(--card) / -2); top: calc(var(--radius) * -1); width: var(--card); }
+}
+}
+</style>
+<style data-8b-part="section:capabilities">
+@layer sections {
+#capabilities { position: relative; padding: calc(var(--space-2) * 0.6) var(--space-1) var(--space-2); background: var(--color-1); color: var(--color-2); }
+#capabilities .capabilities__head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px 40px; margin-bottom: clamp(40px, 7vh, 80px); }
+#capabilities .capabilities__lead { max-width: 27rem; color: var(--color-5); }
+#capabilities .capabilities__deck { display: grid; gap: 20px; }
+#capabilities .service { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding: clamp(18px, 2.4vw, 34px); overflow: hidden; box-shadow: var(--shadow-1); }
+#capabilities .service__text { display: flex; flex-direction: column; gap: 16px; }
+#capabilities .service__line { max-width: 30rem; color: var(--color-6); }
+#capabilities .service__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; color: var(--color-6); }
+#capabilities .service__media { overflow: hidden; border-radius: var(--radius-3); aspect-ratio: 16 / 10; }
+#capabilities .service__media img { width: 100%; height: 100%; object-fit: cover; }
+#capabilities .service__shade { position: absolute; inset: 0; background: var(--color-1); opacity: 0; pointer-events: none; }
+@media (min-width: 900px) {
+  #capabilities .service { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(24px, 3vw, 48px); height: min(62svh, 560px); min-height: 400px; }
+  #capabilities .service__media { aspect-ratio: auto; height: 100%; }
+}
+}
+</style>
+<style data-8b-part="scene-style:capabilities">
+@layer scenes {
+@media (prefers-reduced-motion: no-preference) {
+  #capabilities.is-deck .service { position: sticky; top: calc(clamp(80px, 12svh, 108px) + var(--i) * 14px); transform-origin: 50% 0; }
+}
+}
+</style>
+<style data-8b-part="section:method">
+@layer sections {
+#method { position: relative; padding: var(--space-2) var(--space-1); background: var(--color-2); }
+#method .method__head { display: grid; gap: 24px; max-width: 60rem; margin-bottom: clamp(48px, 9vh, 110px); }
+#method .method__lead { max-width: 34rem; }
+#method .method__body { display: grid; grid-template-columns: minmax(0, 1fr) 92px; gap: 20px; align-items: start; }
+#method .method__ring { position: relative; grid-column: 2; grid-row: 1; width: 100%; aspect-ratio: 1; }
+#method .method__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; rotate: -90deg; }
+#method .method__track { fill: none; stroke: color-mix(in srgb, var(--color-1) 14%, transparent); stroke-width: 1.5; }
+#method .method__arc { fill: none; stroke: var(--color-3); stroke-width: 5; stroke-linecap: round; }
+#method .method__station { position: absolute; left: calc(50% + 42.5% * var(--x)); top: calc(50% + 42.5% * var(--y)); width: 9%; height: 9%; margin: -4.5% 0 0 -4.5%; border-radius: var(--radius-2); background: var(--color-3); }
+#method .method__arm { position: absolute; inset: 7.5%; }
+#method .method__runner { position: absolute; left: 50%; top: 0; width: 15%; height: 15%; margin: -7.5% 0 0 -7.5%; border: 3px solid var(--color-3); border-radius: var(--radius-2); background: var(--color-2); }
+#method .method__steps { grid-column: 1; grid-row: 1; display: grid; gap: clamp(56px, 18vh, 170px); }
+#method .step { display: grid; gap: 14px; max-width: 34rem; }
+#method .step__text { color: var(--color-6); }
+@media (min-width: 900px) {
+  #method .method__body { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 7vw; }
+  #method .method__ring { grid-column: 1; width: min(100%, 50svh); justify-self: center; }
+  #method .method__steps { grid-column: 2; padding-block: 8svh 14svh; }
+}
+}
+</style>
+<style data-8b-part="scene-style:method">
+@layer scenes {
+@media (prefers-reduced-motion: no-preference) {
+  #method.is-cycle .method__ring { position: sticky; top: 104px; }
+  @media (min-width: 900px) { #method.is-cycle .method__ring { top: calc(50svh - min(25svh, 21vw)); } }
+}
+}
+</style>
+<style data-8b-part="section:studio">
+@layer sections {
+#studio { position: relative; padding: var(--space-2) var(--space-1); background: var(--color-2); }
+#studio .studio__head { display: grid; gap: 28px; margin-bottom: clamp(48px, 8vh, 96px); }
+#studio .studio__lead { max-width: 42rem; }
+#studio .studio__collage { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+#studio .shot { position: relative; overflow: hidden; border-radius: var(--radius-3); background: var(--color-4); }
+#studio .shot img { width: 100%; height: 100%; object-fit: cover; }
+#studio .shot--wide { grid-column: span 2; aspect-ratio: 3 / 2; }
+#studio .shot--tall { aspect-ratio: 3 / 4; }
+#studio .studio__roles { grid-column: span 2; display: grid; align-content: start; gap: 18px; padding-top: 24px; }
+#studio .studio__roles ul { display: grid; }
+#studio .role { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; padding: 14px 0; border-top: 1px solid color-mix(in srgb, var(--color-1) 16%, transparent); }
+#studio .role__place { color: var(--color-6); }
+@media (min-width: 900px) {
+  #studio .studio__head { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); align-items: end; column-gap: 6vw; }
+  #studio .studio__collage { display: block; aspect-ratio: 1.85; }
+  #studio .shot { position: absolute; }
+  #studio .shot:nth-child(1) { left: 0; top: 0; width: 34%; }
+  #studio .shot:nth-child(2) { left: 37%; top: 5.5%; width: 19%; }
+  #studio .shot:nth-child(3) { left: 8%; top: 47%; width: 20%; }
+  #studio .shot:nth-child(4) { left: 59%; top: 0; width: 41%; }
+  #studio .shot:nth-child(5) { left: 31%; top: 53.3%; width: 36%; }
+  #studio .studio__roles { position: absolute; left: 71%; top: 55%; width: 29%; padding-top: 0; }
+}
+}
+</style>
+<style data-8b-part="section:journal">
+@layer sections {
+#journal { position: relative; padding: calc(var(--space-2) * 0.6) var(--space-1) var(--space-2); background: var(--color-2); }
+#journal .journal__head { margin-bottom: clamp(40px, 7vh, 88px); }
+#journal .journal__body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+#journal .journal__frame { position: relative; overflow: hidden; border-radius: var(--radius-1); background: var(--color-4); aspect-ratio: 16 / 10; }
+#journal .journal__shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#journal .journal__shot:first-child { z-index: 1; }
+#journal .journal__list { display: grid; gap: clamp(36px, 8vh, 72px); }
+#journal .story { display: grid; gap: 12px; max-width: 36rem; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--color-1) 16%, transparent); }
+#journal .story__meta { color: var(--color-6); }
+#journal .story__meta span { color: var(--color-3); }
+#journal .story__text { color: var(--color-6); }
+@media (min-width: 900px) {
+  #journal .journal__body { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 7vw; }
+  #journal .journal__frame { aspect-ratio: 4 / 5; }
+  #journal .journal__list { gap: clamp(64px, 18vh, 170px); padding-block: 6svh 10svh; }
+}
+}
+</style>
+<style data-8b-part="scene-style:journal">
+@layer scenes {
+@media (prefers-reduced-motion: no-preference) {
+  #journal.is-swap .journal__frame { position: sticky; z-index: 1; top: 80px; }
+  #journal.is-swap .journal__shot:first-child { z-index: auto; }
+  @media (min-width: 900px) { #journal.is-swap .journal__frame { top: calc(50svh - min(30svh, 22vw)); max-height: 60svh; } }
+}
+}
+</style>
+<style data-8b-part="section:faq">
+@layer sections {
+#faq { position: relative; display: grid; gap: 40px; padding: var(--space-2) var(--space-1); background: var(--color-2); border-top: 1px solid color-mix(in srgb, var(--color-1) 12%, transparent); }
+#faq .faq__title { font-size: clamp(48px, 7.2vw, 116px); }
+#faq .faq__item { border-bottom: 1px solid color-mix(in srgb, var(--color-1) 16%, transparent); }
+#faq .faq__item:first-child { border-top: 1px solid color-mix(in srgb, var(--color-1) 16%, transparent); }
+#faq summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 0; cursor: pointer; list-style: none; }
+#faq summary::-webkit-details-marker { display: none; }
+#faq .faq__mark { position: relative; flex: none; width: 34px; height: 34px; border: 1.5px solid var(--color-1); border-radius: var(--radius-2); }
+#faq .faq__mark::after { content: ""; position: absolute; inset: 0; margin: auto; width: 10px; height: 10px; border-radius: var(--radius-2); background: var(--color-3); transition: transform .45s cubic-bezier(.7, 0, .2, 1); }
+#faq details[open] .faq__mark::after { transform: scale(3.1); }
+#faq .faq__answer { max-width: 40rem; padding: 0 0 26px; color: var(--color-6); }
+@media (hover: hover) { #faq summary:hover .faq__mark::after { transform: scale(1.8); } #faq details[open] summary:hover .faq__mark::after { transform: scale(3.1); } }
+@media (min-width: 900px) { #faq { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 6vw; } }
+}
+</style>
+<style data-8b-part="section:contact">
+@layer sections {
+#contact { position: relative; padding: var(--space-2) var(--space-1); background: var(--color-3); color: var(--color-2); }
+#contact :focus-visible { outline-color: var(--color-2); }
+#contact .contact__title { font-size: min(19vw, calc((100vw - 2 * var(--space-1)) / (var(--len) * 0.5))); line-height: 0.86; white-space: nowrap; }
+#contact .contact__title .m-dot { background: var(--color-2); }
+#contact .contact__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; margin-top: clamp(40px, 8vh, 88px); }
+#contact .contact__info { display: grid; align-content: start; gap: 32px; }
+#contact .contact__lead { max-width: 30rem; }
+#contact .contact__mail { font-family: var(--font-1); font-size: clamp(28px, 3.4vw, 50px); font-weight: 700; line-height: 1; letter-spacing: -0.035em; text-decoration: none; }
+#contact .contact__mail span { background: linear-gradient(currentColor, currentColor) 0 100% / 100% 2px no-repeat; padding-bottom: 4px; }
+#contact .contact__places { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; }
+#contact .contact__places dt { margin-bottom: 6px; }
+#contact .contact__places dd a { text-decoration: none; }
+#contact .contact__form { display: grid; gap: 18px; padding: clamp(22px, 3vw, 40px); }
+#contact .contact__form label { display: grid; gap: 2px; color: var(--color-6); }
+#contact .contact__form .m-field { color: var(--color-1); }
+#contact .contact__form :focus-visible { outline-color: var(--color-3); }
+#contact .contact__pair { display: grid; gap: 18px; }
+#contact .contact__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding-top: 6px; }
+#contact .contact__status { color: var(--color-1); }
+@media (min-width: 640px) { #contact .contact__pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { #contact .contact__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 6vw; } }
+}
+</style>
+<style data-8b-part="section:footer">
+@layer sections {
+#footer { --ap: min(30vw, 44svh); position: relative; padding: clamp(80px, 12vh, 140px) var(--space-1) 28px; background: var(--color-1); color: var(--color-2); overflow: clip; }
+#footer .footer__bye { position: relative; padding-top: var(--ap); white-space: nowrap; font-size: min(36vw, 40svh); }
+#footer .footer__word { display: inline-block; }
+#footer .footer__period { position: relative; display: inline-block; width: 0.19em; height: 0.19em; margin-left: 0.035em; vertical-align: baseline; }
+#footer .footer__aperture { position: absolute; left: 0; bottom: 0; width: var(--ap); height: var(--ap); overflow: hidden; border-radius: var(--radius-2); background: var(--color-3); transform-origin: 0 100%; }
+#footer .footer__img { width: 100%; height: 100%; object-fit: cover; }
+#footer .footer__tint { position: absolute; inset: 0; background: var(--color-3); opacity: 0; }
+#footer .footer__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; margin-top: clamp(48px, 9vh, 96px); padding-top: 32px; border-top: 1px solid color-mix(in srgb, var(--color-2) 16%, transparent); }
+#footer .footer__col { display: grid; align-content: start; gap: 6px; }
+#footer .footer__label { margin-bottom: 8px; color: var(--color-5); }
+#footer .footer__news { grid-column: 1 / -1; display: grid; gap: 14px; }
+#footer .footer__field { display: flex; align-items: center; gap: 12px; }
+#footer .footer__field .m-field { flex: 1; }
+#footer .footer__note { color: var(--color-5); }
+#footer .footer__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 56px; color: var(--color-5); }
+@media (min-width: 900px) {
+  #footer .footer__bye { font-size: min(24vw, 40svh); }
+  #footer .footer__grid { grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr); }
+  #footer .footer__news { grid-column: auto; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #footer .footer__img { animation: footer-turn 46s linear infinite; }
+  #footer.is-offscreen .footer__img { animation-play-state: paused; }
+  @keyframes footer-turn { to { transform: rotate(360deg); } }
+}
+}
+</style>
+<style data-8b-part="ryuu">
+/* Ryuu additions on top of the Onda system. */
+@layer sections {
+/* Buttons sit on the logo orange, so their label is dark until the dark fill sweeps in. */
+.m-btn { color: var(--color-1); transition: color .35s; }
+@media (hover: hover) { .m-btn:hover { color: var(--color-2); } }
+
+/* Navigation: house mark in the wordmark pill, portal login beside the CTA. */
+#navigation .nav__brand { align-items: center; gap: 10px; padding: 0 18px 0 12px; }
+#navigation .nav__brand img { width: 40px; height: auto; flex: none; }
+#navigation .nav__brand-name { padding-top: 2px; }
+#navigation .nav__login { box-shadow: var(--shadow-3); }
+#navigation .menu__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+@media (max-width: 899px) { #navigation .nav__login { display: none; } }
+@media (max-width: 420px) { #navigation .nav__brand { font-size: 21px; } #navigation .nav__brand img { width: 32px; } }
+
+/* Hero: a small line of facts under the lead. */
+#hero .hero__facts { display: flex; flex-wrap: wrap; gap: 8px; color: var(--color-5); }
+
+/* Work and wheel notes. */
+#work .work__note, #again .again__note { color: var(--color-5); }
+.is-concept::before { content: "Illustrative concept"; position: absolute; z-index: 2; right: clamp(18px, 2vw, 28px); top: clamp(18px, 2vw, 28px); padding: 6px 10px; border-radius: var(--radius-2); background: color-mix(in srgb, var(--color-1) 62%, transparent); color: var(--color-2); font-family: var(--font-2); font-size: 12px; font-weight: 500; line-height: 1; }
+#again .partner__card.is-concept::before { right: auto; left: clamp(16px, 1.8vw, 26px); }
+/* Amenity cards open into a larger view when clicked. */
+#again .partner__card { cursor: zoom-in; transition: box-shadow .3s ease, outline-color .3s ease; outline: 2px solid transparent; outline-offset: 4px; }
+#again .partner__card:hover { box-shadow: 0 0 0 2px var(--color-3); }
+#again .partner__card:focus-visible { outline-color: var(--color-3); }
+#again .partner__card .partner__img { transition: scale .6s cubic-bezier(.2,.7,.2,1); }
+#again .partner__card:hover .partner__img { scale: 1.04; }
+.amenity-view { width: min(1040px, calc(100vw - 32px)); max-width: none; max-height: calc(100svh - 32px); padding: 0; border: 0; border-radius: var(--radius-1); background: var(--color-7); color: var(--color-2); overflow: hidden; opacity: 0; scale: .94; transition: opacity .35s ease, scale .45s cubic-bezier(.2,.8,.2,1), overlay .35s allow-discrete, display .35s allow-discrete; }
+.amenity-view[open] { opacity: 1; scale: 1; }
+@starting-style { .amenity-view[open] { opacity: 0; scale: .94; } }
+.amenity-view::backdrop { background: color-mix(in srgb, var(--color-1) 82%, transparent); backdrop-filter: blur(6px); opacity: 0; transition: opacity .35s ease, overlay .35s allow-discrete, display .35s allow-discrete; }
+.amenity-view[open]::backdrop { opacity: 1; }
+@starting-style { .amenity-view[open]::backdrop { opacity: 0; } }
+.amenity-view__inner { display: grid; grid-template-columns: minmax(0, 1fr); max-height: calc(100svh - 32px); overflow: auto; overscroll-behavior: contain; }
+.amenity-view__media { position: relative; background: var(--color-1); aspect-ratio: 4 / 5; max-height: 58svh; width: 100%; }
+.amenity-view__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.amenity-view__tag { position: absolute; left: 18px; top: 18px; padding: 6px 10px; border-radius: var(--radius-2); background: color-mix(in srgb, var(--color-1) 62%, transparent); color: var(--color-2); font-size: 13px; }
+.amenity-view__body { display: grid; align-content: end; justify-items: start; gap: 14px; padding: clamp(22px, 3.4vw, 48px); overflow: auto; }
+.amenity-view__num { background: color-mix(in srgb, var(--color-2) 10%, transparent); }
+.amenity-view__title { font-size: clamp(30px, 3.6vw, 52px); }
+.amenity-view__line { color: var(--color-5); max-width: 30rem; }
+.amenity-view__nav { display: flex; gap: 10px; margin-top: 12px; }
+.amenity-view__btn { display: inline-grid; place-items: center; width: 48px; height: 48px; border: 1px solid color-mix(in srgb, var(--color-2) 22%, transparent); border-radius: var(--radius-2); background: transparent; color: var(--color-2); cursor: pointer; transition: background .25s ease, color .25s ease, border-color .25s ease; }
+.amenity-view__btn:hover, .amenity-view__btn:focus-visible { background: var(--color-3); border-color: var(--color-3); color: var(--color-1); outline: none; }
+.amenity-view__btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.amenity-view__close { position: absolute; z-index: 2; right: 14px; top: 14px; background: color-mix(in srgb, var(--color-1) 62%, transparent); border-color: transparent; }
+.amenity-view__count { color: var(--color-5); font-size: 14px; align-self: center; margin-left: 6px; }
+@media (min-width: 760px) {
+  .amenity-view__inner { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-height: min(640px, calc(100svh - 32px)); }
+  .amenity-view__media { aspect-ratio: auto; max-height: none; height: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .amenity-view, .amenity-view::backdrop { transition: none; } #again .partner__card .partner__img { transition: none; } }
+
+/* Studio collage caption on the portrait. */
+#studio .shot figcaption { position: absolute; left: 12px; bottom: 12px; padding: 7px 12px; border-radius: var(--radius-2); background: color-mix(in srgb, var(--color-1) 70%, transparent); color: var(--color-2); font-family: var(--font-2); font-size: 13px; font-weight: 600; line-height: 1; }
+#studio .studio__promise { color: var(--color-9); font-family: var(--font-1); font-weight: 700; }
+
+/* Stories: the coloured word needs the darker orange to read on white. */
+#journal .story__meta span { color: var(--color-9); }
+
+/* Contact sits on the logo indigo; its dot is the logo orange. */
+#contact { background: var(--color-8); }
+#contact .contact__title .m-dot { background: var(--color-3); }
+#contact .contact__places dd + dd { margin-top: 4px; }
+#contact .contact__flag { display: inline-flex; align-items: center; gap: 10px; }
+#contact .contact__flag::before { content: ""; width: 10px; height: 10px; border-radius: var(--radius-2); background: var(--color-3); box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-3) 25%, transparent); }
+#contact .contact__panel { display: grid; align-content: start; gap: 22px; padding: clamp(22px, 3vw, 40px); }
+#contact .contact__panel p { color: var(--color-6); }
+#contact .contact__panel :focus-visible { outline-color: var(--color-8); }
+#contact .contact__list { display: grid; }
+#contact .contact__list li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid color-mix(in srgb, var(--color-1) 16%, transparent); }
+#contact .contact__list li span:last-child { color: var(--color-6); text-align: right; }
+#contact .contact__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+#contact .contact__actions .m-btn-2 { box-shadow: var(--shadow-3); }
+#contact .contact__placeholder { color: var(--color-6); }
+#contact .contact__placeholder[hidden] { display: none; }
+
+/* Footer: the full logo card replaces the newsletter. */
+#footer .footer__logo { grid-column: 1 / -1; display: grid; gap: 14px; align-content: start; }
+#footer .footer__logo img { width: min(100%, 340px); height: auto; aspect-ratio: 1325 / 924; object-fit: contain; border-radius: var(--radius-3); }
+#footer .footer__logo p { color: var(--color-5); }
+@media (min-width: 900px) { #footer .footer__logo { grid-column: auto; justify-items: end; text-align: right; } }
+
+/* Placeholder round photo: the template texture warmed toward the logo orange until the real image arrives. */
+.is-warm-placeholder { filter: hue-rotate(118deg) saturate(1.15); }
+}
+</style>
+<style data-8b-part="extras">
+.service__free{background:var(--orange,#ef7d1a)!important;color:#0d0c11!important;font-weight:700}
+.service__free.is-full{background:#0d0c11!important;color:#fff!important}
+.visit{margin-top:clamp(24px,3vw,40px);padding:clamp(22px,3vw,40px);border-radius:28px;display:grid;gap:22px}
+.visit__head p{margin:.4em 0 0;opacity:.75}
+.visit__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:14px}
+.visit__grid label{display:grid;gap:6px;font-size:14px}.visit__grid label span{opacity:.75}
+.visit__grid input,.visit__grid select,.visit__grid textarea{font:inherit;font-size:16px;padding:12px 14px;border-radius:14px;border:1px solid rgba(13,12,17,.18);background:#fff;color:#0d0c11;width:100%;box-sizing:border-box}
+.visit__wide{grid-column:1/-1}.visit__trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.visit__foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.visit__status{margin:0}.visit__status.is-error{color:#b42318}
+</style>
+</head>
+<body class="m-text">
+<a class="skip" href="#main">Skip to content</a>
+<!-- navigation: fixed top bar: wordmark, section links, portal login and Apply button; phone menu overlay -->
+<header id="navigation" class="nav" data-8b-section="navigation">
+  <a class="nav__brand" href="#hero" aria-label="Ryuu, back to the top"><img src="/images/ryuu-house-logo.png" width="104" height="68" alt=""><span class="nav__brand-name">Ryuu<span class="m-dot" aria-hidden="true"></span></span></a>
+  <nav class="nav__links" aria-label="Main">
+    <ul>
+      <li><a class="m-link-2" href="#work">Inside</a></li>
+      <li><a class="m-link-2" href="#again">Amenities</a></li>
+      <li><a class="m-link-2" href="#capabilities">Rooms</a></li>
+      <li><a class="m-link-2" href="#method">Admission</a></li>
+      <li><a class="m-link-2" href="#contact">Location</a></li>
+    </ul>
+  </nav>
+  <a class="m-btn-2 nav__login" href="/login"><span class="m-btn__label">Portal login</span></a>
+  <a class="m-btn nav__cta" href="/register"><span class="m-btn__label">Apply to stay</span></a>
+  <button class="m-btn-2 nav__menu" type="button" aria-expanded="false" aria-controls="menu"><span class="m-btn__label">Menu</span></button>
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" data-lenis-prevent hidden>
+    <div class="menu__top"><button class="m-icon menu__close" type="button" aria-label="Close the menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13"/></svg></button></div>
+    <ul class="menu__list">
+      <li><a href="#work">Inside<span class="m-dot" aria-hidden="true"></span></a></li>
+      <li><a href="#again">Amenities<span class="m-dot" aria-hidden="true"></span></a></li>
+      <li><a href="#capabilities">Rooms<span class="m-dot" aria-hidden="true"></span></a></li>
+      <li><a href="#method">Admission<span class="m-dot" aria-hidden="true"></span></a></li>
+      <li><a href="#faq">FAQ<span class="m-dot" aria-hidden="true"></span></a></li>
+      <li><a href="#contact">Location<span class="m-dot" aria-hidden="true"></span></a></li>
+    </ul>
+    <div>
+      <div class="menu__cta"><a class="m-btn" href="/register"><span class="m-btn__label">Apply to stay</span></a><a class="m-btn-2" href="/login"><span class="m-btn__label">Portal login</span></a></div>
+      <p class="m-text menu__foot">Men's PG hostel · Koramangala, Bengaluru · <a href="tel:+000000000000">00000 00000</a></p>
+    </div>
+  </div>
+</header>
+<main id="main">
+<!-- hero: one-word greeting whose full stop is a giant round photo (animation: scene:hero) -->
+<section id="hero" data-8b-section="hero" aria-labelledby="hero-title">
+  <div class="hero__intro">
+    <p class="m-text-5 hero__lead">We're Ryuu, an air-conditioned PG hostel in Koramangala, Bengaluru, created for men who want cool rooms, calm days and safe nights.</p>
+    <ul class="hero__facts"><li class="m-badge">Opening shortly</li><li class="m-badge">Men only, 18+</li><li class="m-badge">3, 4 &amp; 5 sharing rooms</li><li class="m-badge">Car &amp; bike parking</li></ul>
+    <a class="m-link hero__link" href="#work"><span class="m-link__label">Take a look inside</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+  </div>
+  <h1 class="m-text-2 hero__title" id="hero-title" style="--len:5"><span class="visually-hidden">Ryuu, men's PG hostel in Koramangala, Bengaluru. </span><span class="hero__word"><span class="hero__mask"><span class="hero__glyphs">Hello</span></span></span><span class="hero__period" aria-hidden="true"><span class="hero__stage"><span class="hero__orbit"><span class="hero__moon"></span></span><span class="hero__aperture"><img class="hero__img" data-photo="hero-round" src="/images/photos/hero-round.webp" width="1200" height="1200" alt="" fetchpriority="high" style="background:#b4560a"><span class="hero__tint"></span></span></span></span></h1>
+</section>
+
+<!-- statement (animation: scene:statement) -->
+<section id="statement" data-8b-section="statement" aria-labelledby="statement-title">
+  <h2 class="m-text-3 statement__title" id="statement-title"><span class="statement__line">Cool rooms,</span><span class="statement__line">calm days &amp; safe nights<span class="m-dot statement__dot" aria-hidden="true"></span></span></h2>
+  <div class="statement__body">
+    <p class="m-text-5 statement__lead" data-8b-motion="ink">A new city. A fresh routine. A world of possibilities. Ryuu is a premium men's hostel with a simple idea: a comfortable, quiet place to come back to, and the freedom to move forward. Air-conditioned rooms with balconies, soft water, homemade food and 24/7 security, between Hosur Road and Sarjapur Road.</p>
+    <nav class="statement__index" aria-label="On this page">
+      <ul>
+        <li><a class="m-link" href="#work"><span class="m-link__label">Take a look inside</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+        <li><a class="m-link" href="#again"><span class="m-link__label">Amenities</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+        <li><a class="m-link" href="#capabilities"><span class="m-link__label">Rooms, food and safety</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+        <li><a class="m-link" href="#method"><span class="m-link__label">How admission works</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+        <li><a class="m-link" href="#contact"><span class="m-link__label">Location and contact</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+        <li><a class="m-link" href="/register"><span class="m-link__label">Apply to stay</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+
+<!-- work: a look inside, cards on a horizontal track (animation: scene:work) -->
+<section id="work" data-8b-section="work" aria-labelledby="work-title">
+  <div class="work__plate" aria-hidden="true"></div>
+  <div class="work__stage">
+    <div class="work__head">
+      <h2 class="m-text-3" id="work-title">Inside Ryuu<span class="m-dot" aria-hidden="true"></span></h2>
+      <p class="m-text-5 work__lead">A glimpse of everyday life at Ryuu. <span class="work__note">Interior images are illustrative until real photographs replace them before opening.</span></p>
+    </div>
+    <div class="work__window">
+      <ul class="work__track">
+        <li class="case is-concept">
+          <div class="case__media"><img class="case__img" data-photo="inside-room" src="/images/photos/inside-room.webp" width="1536" height="1024" alt="Illustrative shared room with steel cots, steel cupboards and a balcony door" loading="lazy" style="background:#c8a888"></div>
+          <span class="m-badge case__tag">3, 4 or 5 sharing</span>
+          <div class="case__text"><h3 class="m-text-4 case__name">Room to make it yours</h3><p class="m-text-5 case__line">Every room is air-conditioned. Every bed comes with a steel cot, a six-inch foam mattress and your own steel cupboard with a safety locker.</p></div>
+        </li>
+        <li class="case is-concept">
+          <div class="case__media"><img class="case__img" data-photo="inside-balcony" src="/images/photos/inside-balcony.webp" width="1536" height="1024" alt="Illustrative balcony with potted palms, a folding chair and a view of trees" loading="lazy" style="background:#f8f8f8"></div>
+          <span class="m-badge case__tag">In every room</span>
+          <div class="case__text"><h3 class="m-text-4 case__name">A balcony of your own</h3><p class="m-text-5 case__line">Fresh air, morning light and a quiet minute with your tea before the day begins.</p></div>
+        </li>
+        <li class="case is-concept">
+          <div class="case__media"><img class="case__img" data-photo="inside-dining" src="/images/photos/inside-dining.webp" width="1536" height="1024" alt="Illustrative dining room with idli, sambar and eggs on steel plates" loading="lazy" style="background:#a88868"></div>
+          <span class="m-badge case__tag">Homemade food</span>
+          <div class="case__text"><h3 class="m-text-4 case__name">Food that tastes like home</h3><p class="m-text-5 case__line">Fresh homemade meals every day, with both veg and non-veg options available, and eggs every morning.</p></div>
+        </li>
+        <li class="case is-concept">
+          <div class="case__media"><img class="case__img" data-photo="inside-gym" src="/images/photos/inside-gym.webp" width="1536" height="1024" alt="Illustrative in-house gym with a treadmill, exercise bike and dumbbells" loading="lazy" style="background:#d8a888"></div>
+          <span class="m-badge case__tag">Gym and home theatre</span>
+          <div class="case__text"><h3 class="m-text-4 case__name">Room to unwind</h3><p class="m-text-5 case__line">A gym for your morning workout and a home theatre for movie nights with friends.</p></div>
+        </li>
+        <li class="case">
+          <div class="case__media"><img class="case__img" data-photo="inside-building" src="/images/ryuu-exterior.webp" width="1536" height="1024" alt="Ryuu building in Koramangala, Bengaluru" loading="lazy" style="background:#4d86d6"></div>
+          <span class="m-badge case__tag">Koramangala</span>
+          <div class="case__text"><h3 class="m-text-4 case__name">Your new address</h3><p class="m-text-5 case__line">80 Feet Road, Koramangala, with a lift to every floor and gated car and bike parking below.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- again: amenities, cards on a wheel that turns with scroll (animation: scene:again) -->
+<section id="again" data-8b-section="again" aria-labelledby="again-title">
+  <div class="again__stage">
+    <div class="again__head">
+      <h2 class="m-text-3" id="again-title">Amenities<span class="m-dot" aria-hidden="true"></span></h2>
+      <p class="m-text-5 again__lead">Little things, a big difference. The everyday comforts that make it home from the very first day.</p>
+    </div>
+    <div class="again__swing">
+      <ul class="again__wheel">
+        <li class="partner">
+          <div class="partner__card is-concept"><img class="partner__img" data-photo="amenity-ac" src="/images/photos/amenity-ac.webp" width="1122" height="1402" alt="Illustrative AC unit above a neatly made bed" loading="lazy" style="background:#d8b8a8">
+          <div class="partner__text"><span class="m-badge partner__year">01</span><h3 class="m-text-4 partner__name">AC rooms</h3><p class="m-text partner__line">Split AC in every room.</p></div></div>
+        </li>
+        <li class="partner">
+          <div class="partner__card is-concept"><img class="partner__img" data-photo="amenity-hot-water" src="/images/photos/amenity-hot-water.webp" width="1122" height="1402" alt="Illustrative attached bathroom with a steaming shower and water heater" loading="lazy" style="background:#987868">
+          <div class="partner__text"><span class="m-badge partner__year">02</span><h3 class="m-text-4 partner__name">Hot water, always</h3><p class="m-text partner__line">Attached bathrooms with heat pump hot water, 24 hours.</p></div></div>
+        </li>
+        <li class="partner">
+          <div class="partner__card is-concept"><img class="partner__img" data-photo="amenity-soft-water" src="/images/photos/amenity-soft-water.webp" width="1122" height="1402" alt="Illustrative clear water flowing from a chrome tap" loading="lazy" style="background:#a89898">
+          <div class="partner__text"><span class="m-badge partner__year">03</span><h3 class="m-text-4 partner__name">No hard water</h3><p class="m-text partner__line">A water softener for the bathrooms and a RO purifier on every floor.</p></div></div>
+        </li>
+        <li class="partner">
+          <div class="partner__card is-concept"><img class="partner__img" data-photo="amenity-balcony" src="/images/photos/amenity-balcony.webp" width="1122" height="1402" alt="Illustrative open balcony door looking out to green trees" loading="lazy" style="background:#b8d8f8">
+          <div class="partner__text"><span class="m-badge partner__year">04</span><h3 class="m-text-4 partner__name">Balcony</h3><p class="m-text partner__line">In every room.</p></div></div>
+        </li>
+        <li class="partner">
+          <div class="partner__card is-concept"><img class="partner__img" data-photo="amenity-wifi" src="/images/photos/amenity-wifi.webp" width="1199" height="1312" alt="Illustrative laptop connected to Wi-Fi on a study table" loading="lazy" style="background:#081828">
+          <div class="partner__text"><span class="m-badge partner__year">05</span><h3 class="m-text-4 partner__name">High-speed Wi-Fi</h3><p class="m-text partner__line">For classes, calls and the shows you love.</p></div></div>
+        </li>
+        <li class="partner">
+          <div class="partner__card is-concept"><img class="partner__img" data-photo="amenity-gym" src="/images/photos/amenity-gym.webp" width="1199" height="1312" alt="Illustrative gym with dumbbells, a treadmill and an exercise bike" loading="lazy" style="background:#181818">
+          <div class="partner__text"><span class="m-badge partner__year">06</span><h3 class="m-text-4 partner__name">Gym</h3><p class="m-text partner__line">Start the day strong, without leaving home.</p></div></div>
+        </li>
+        <li class="partner">
+          <div class="partner__card is-concept"><img class="partner__img" data-photo="amenity-laundry" src="/images/photos/amenity-laundry.webp" width="1199" height="1312" alt="Illustrative laundry room with front-loading washing machines" loading="lazy" style="background:#080808">
+          <div class="partner__text"><span class="m-badge partner__year">07</span><h3 class="m-text-4 partner__name">Washing machines</h3><p class="m-text partner__line">Front-loading washing machines for your laundry.</p></div></div>
+        </li>
+        <li class="partner">
+          <div class="partner__card is-concept"><img class="partner__img" data-photo="amenity-parking" src="/images/photos/amenity-parking.webp" width="1122" height="1402" alt="Illustrative covered parking with a car and scooters" loading="lazy" style="background:#a88878">
+          <div class="partner__text"><span class="m-badge partner__year">08</span><h3 class="m-text-4 partner__name">Car &amp; bike parking</h3><p class="m-text partner__line">Plenty of room, with a lift and UPS power backup.</p></div></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- amenity-view: the larger view a clicked amenity card opens into (script: section-script:amenity-view) -->
+<dialog class="amenity-view" id="amenity-view" aria-labelledby="amenity-view-title">
+  <div class="amenity-view__inner">
+    <div class="amenity-view__media"><img alt="" width="1122" height="1402"><span class="amenity-view__tag">Illustrative concept</span></div>
+    <div class="amenity-view__body">
+      <span class="m-badge amenity-view__num"></span>
+      <h3 class="m-text-3 amenity-view__title" id="amenity-view-title"></h3>
+      <p class="m-text-5 amenity-view__line"></p>
+      <div class="amenity-view__nav">
+        <button type="button" class="amenity-view__btn" data-step="-1" aria-label="Previous amenity"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5"/></svg></button>
+        <button type="button" class="amenity-view__btn" data-step="1" aria-label="Next amenity"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+        <span class="amenity-view__count" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="amenity-view__btn amenity-view__close" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button>
+</dialog>
+
+<!-- capabilities: rooms, water, food, safety and portal, cards that stack as you scroll (animation: scene:capabilities) -->
+<section id="capabilities" data-8b-section="capabilities" aria-labelledby="capabilities-title">
+  <div class="capabilities__head">
+    <h2 class="m-text-3" id="capabilities-title" data-8b-motion="rise">Rooms and care<span class="m-dot" aria-hidden="true"></span></h2>
+    <p class="m-text-5 capabilities__lead">Three room types, every one air-conditioned. Clean water, homemade food and a team that keeps you safe, day and night.</p>
+  </div>
+  <ol class="capabilities__deck">
+    <li class="service m-surface">
+      <div class="service__text">
+        <h3 class="m-text-4">Three sharing, AC</h3>
+        <p class="m-text-5 service__line">200 sq ft shared by three, with a balcony and an attached bathroom. Stay daily, weekly or monthly.</p>
+        <ul class="service__tags"><li class="m-badge service__free" data-free-sharing="3" hidden></li><li class="m-badge">AC</li><li class="m-badge">200 sq ft</li><li class="m-badge">Steel cot, 6-inch foam mattress</li><li class="m-badge">Steel cupboard with safety locker</li></ul>
+      </div>
+      <div class="service__media" data-8b-motion="iris"><img data-photo="room-three" src="/images/photos/room-three.webp" width="1448" height="1086" alt="Illustrative three sharing AC room with steel cots and cupboards" loading="lazy" style="background:#d8b898"></div>
+      <span class="service__shade" aria-hidden="true"></span>
+    </li>
+    <li class="service m-surface">
+      <div class="service__text">
+        <h3 class="m-text-4">Four sharing, AC</h3>
+        <p class="m-text-5 service__line">300 sq ft shared by four, with split AC, a balcony and an attached bathroom. Stay daily, weekly or monthly.</p>
+        <ul class="service__tags"><li class="m-badge service__free" data-free-sharing="4" hidden></li><li class="m-badge">Split AC</li><li class="m-badge">300 sq ft</li><li class="m-badge">Steel cot, 6-inch foam mattress</li><li class="m-badge">Steel cupboard with safety locker</li></ul>
+      </div>
+      <div class="service__media" data-8b-motion="iris"><img data-photo="room-four" src="/images/photos/room-four.webp" width="1448" height="1086" alt="Illustrative four sharing AC room with steel cots and cupboards" loading="lazy" style="background:#e8b898"></div>
+      <span class="service__shade" aria-hidden="true"></span>
+    </li>
+    <li class="service m-surface">
+      <div class="service__text">
+        <h3 class="m-text-4">Five sharing, AC</h3>
+        <p class="m-text-5 service__line">Our most spacious room: 440 sq ft shared by five, with a balcony and an attached bathroom. Stay daily, weekly or monthly.</p>
+        <ul class="service__tags"><li class="m-badge service__free" data-free-sharing="5" hidden></li><li class="m-badge">AC</li><li class="m-badge">440 sq ft</li><li class="m-badge">Steel cot, 6-inch foam mattress</li><li class="m-badge">Steel cupboard with safety locker</li></ul>
+      </div>
+      <div class="service__media" data-8b-motion="iris"><img data-photo="room-five" src="/images/photos/room-five.webp" width="1448" height="1086" alt="Illustrative five sharing AC room with steel cots and cupboards" loading="lazy" style="background:#e8c8a8"></div>
+      <span class="service__shade" aria-hidden="true"></span>
+    </li>
+    <li class="service m-surface">
+      <div class="service__text">
+        <h3 class="m-text-4">Water you can trust</h3>
+        <p class="m-text-5 service__line">No hard water: a softener treats the water in all bathrooms, a heat pump keeps it hot, and every floor has a RO purifier for drinking water.</p>
+        <ul class="service__tags"><li class="m-badge">Water softener</li><li class="m-badge">Heat pump hot water</li><li class="m-badge">RO on every floor</li></ul>
+      </div>
+      <div class="service__media" data-8b-motion="iris"><img data-photo="care-water" src="/images/photos/care-water.webp" width="1448" height="1086" alt="Illustrative RO purifier and water softener" loading="lazy" style="background:#c8a898"></div>
+      <span class="service__shade" aria-hidden="true"></span>
+    </li>
+    <li class="service m-surface">
+      <div class="service__text">
+        <h3 class="m-text-4">Homemade food</h3>
+        <p class="m-text-5 service__line">Meals cooked fresh every day, with both veg and non-veg options to choose from, plus eggs every morning. Choose tomorrow's meals from your account between 6 PM and 11 PM.</p>
+        <ul class="service__tags"><li class="m-badge">Veg daily</li><li class="m-badge">Non-veg daily</li><li class="m-badge">Morning eggs daily</li><li class="m-badge">Choose meals in the portal</li></ul>
+      </div>
+      <div class="service__media" data-8b-motion="iris"><img data-photo="care-meals" src="/images/photos/care-meals.webp" width="1448" height="1086" alt="Illustrative homemade breakfast of idli and pongal on a steel plate" loading="lazy" style="background:#a88868"></div>
+      <span class="service__shade" aria-hidden="true"></span>
+    </li>
+    <li class="service m-surface">
+      <div class="service__text">
+        <h3 class="m-text-4">Safe and secure</h3>
+        <p class="m-text-5 service__line">24/7 security staff and CCTV surveillance in the common areas, with attendance, outpasses and guardian updates in the portal.</p>
+        <ul class="service__tags"><li class="m-badge">24/7 security</li><li class="m-badge">CCTV</li><li class="m-badge">Outpasses</li><li class="m-badge">Guardian updates</li></ul>
+      </div>
+      <div class="service__media" data-8b-motion="iris"><img data-photo="care-security" src="/images/photos/care-security.webp" width="1448" height="1086" alt="Illustrative security desk with a CCTV monitor and camera" loading="lazy" style="background:#d8b8a8"></div>
+      <span class="service__shade" aria-hidden="true"></span>
+    </li>
+    <li class="service m-surface">
+      <div class="service__text">
+        <h3 class="m-text-4">Your resident portal</h3>
+        <p class="m-text-5 service__line">Meals, payments, outpasses and a direct line to the hostel team. Less paperwork, more living.</p>
+        <ul class="service__tags"><li class="m-badge">Payments</li><li class="m-badge">Notifications</li><li class="m-badge">Help and tickets</li><li class="m-badge">Installable app</li></ul>
+      </div>
+      <div class="service__media" data-8b-motion="iris"><img data-photo="care-portal" src="/images/photos/care-portal.webp" width="1448" height="1086" alt="Illustrative resident portal open on a laptop and phone" loading="lazy" style="background:#e8e8e8"></div>
+      <span class="service__shade" aria-hidden="true"></span>
+    </li>
+  </ol>
+</section>
+
+<!-- method: admission, four steps beside a ring the scroll draws round (animation: scene:method) -->
+<section id="method" data-8b-section="method" aria-labelledby="method-title">
+  <div class="method__head">
+    <h2 class="m-text-3" id="method-title" data-8b-motion="rise">How admission works<span class="m-dot" aria-hidden="true"></span></h2>
+    <p class="m-text-5 method__lead" data-8b-motion="ink">Four simple steps from your first look to your first night. Everything happens in your account, and the hostel team confirms each one.</p>
+  </div>
+  <div class="method__body">
+    <div class="method__ring" aria-hidden="true">
+      <svg class="method__svg" viewBox="0 0 400 400"><circle class="method__track" cx="200" cy="200" r="170"/><circle class="method__arc" cx="200" cy="200" r="170" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="0"/></svg>
+      <span class="method__station" style="--x:0;--y:-1"></span>
+      <span class="method__station" style="--x:1;--y:0"></span>
+      <span class="method__station" style="--x:0;--y:1"></span>
+      <span class="method__station" style="--x:-1;--y:0"></span>
+      <span class="method__arm"><span class="method__runner"></span></span>
+    </div>
+    <ol class="method__steps">
+      <li class="step"><h3 class="m-text-4">Apply</h3><p class="m-text-5 step__text">Create an account and verify your email and phone number. Ryuu welcomes men aged 18 and above.</p></li>
+      <li class="step"><h3 class="m-text-4">Choose your bed</h3><p class="m-text-5 step__text">Pick a 3, 4 or 5 sharing room and your preferred bed. Availability is confirmed by the hostel team.</p></li>
+      <li class="step"><h3 class="m-text-4">Get approved</h3><p class="m-text-5 step__text">An admin reviews your application and lets you know in your portal.</p></li>
+      <li class="step"><h3 class="m-text-4">Move in</h3><p class="m-text-5 step__text">Submit your first month's rent and refundable deposit details within 48 hours. Your booking is confirmed once payment is verified.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- studio: life at Ryuu, a photo collage that deals out from a pile (animation: scene:studio) -->
+<section id="studio" data-8b-section="studio" aria-labelledby="studio-title">
+  <div class="studio__head">
+    <h2 class="m-text-3" id="studio-title">Life at Ryuu<span class="m-dot" aria-hidden="true"></span></h2>
+    <p class="m-text-5 studio__lead" data-8b-motion="ink">Morning coffee on the balcony, quiet evenings of study and movie nights in the home theatre. A calm, friendly home where you can just be you.</p>
+  </div>
+  <div class="studio__collage">
+    <figure class="shot shot--wide is-concept"><img data-photo="life-study" src="/images/photos/life-study.webp" width="1536" height="1024" alt="Illustrative study table with a laptop, books and a lamp" loading="lazy" style="background:#d8b8a8"></figure>
+    <figure class="shot shot--tall is-concept"><img data-photo="life-coffee" src="/images/photos/life-coffee.webp" width="1536" height="1024" alt="Illustrative filter coffee on a balcony table among plants" loading="lazy" style="background:#181808"></figure>
+    <figure class="shot shot--tall is-concept"><img data-photo="life-welcome" src="/images/photos/life-welcome.webp" width="1536" height="1024" alt="Illustrative welcoming reception desk and lift lobby" loading="lazy" style="background:#c88858"></figure>
+    <figure class="shot shot--wide is-concept"><img data-photo="life-movies" src="/images/photos/life-movies.webp" width="1536" height="1024" alt="Illustrative home theatre room with bean bags and a large screen" loading="lazy" style="background:#080808"></figure>
+    <figure class="shot shot--wide is-concept"><img data-photo="life-dinner" src="/images/photos/life-dinner.webp" width="1536" height="1024" alt="Illustrative plate of idli, chutney and sambar on a dining table" loading="lazy" style="background:#281818"></figure>
+    <div class="studio__roles">
+      <h3 class="m-text-7" data-8b-motion="rise">Who it's for<span class="m-dot" aria-hidden="true"></span></h3>
+      <ul>
+        <li class="role"><span class="m-text-7">Students</span><span class="m-text-6 role__place">Men, 18+</span></li>
+        <li class="role"><span class="m-text-7">Working men</span><span class="m-text-6 role__place">Men, 18+</span></li>
+        <li class="role"><span class="m-text-7">Opening</span><span class="m-text-6 role__place" data-public="opening">Shortly</span></li>
+      </ul>
+      <p class="m-text-7 studio__promise">Cool rooms. Calm days. Your city.</p>
+    </div>
+  </div>
+</section>
+
+<!-- journal: your everyday, four stories beside a sticky photo frame (animation: scene:journal) -->
+<section id="journal" data-8b-section="journal" aria-labelledby="journal-title">
+  <div class="journal__head">
+    <h2 class="m-text-3" id="journal-title" data-8b-motion="rise">Your everyday<span class="m-dot" aria-hidden="true"></span></h2>
+  </div>
+  <div class="journal__body">
+    <div class="journal__frame">
+      <img class="journal__shot" data-photo="day-meals" src="/images/photos/day-meals.webp" width="1536" height="1024" alt="Illustrative homemade meal on a steel plate in the dining room" loading="lazy" style="background:#c88858">
+      <img class="journal__shot" data-photo="day-outpass" src="/images/photos/day-outpass.webp" width="1122" height="1402" alt="Illustrative notebook, phone and keys ready for a trip home" loading="lazy" style="background:#e8d8d8">
+      <img class="journal__shot" data-photo="day-laundry" src="/images/photos/day-laundry.webp" width="1122" height="1402" alt="Illustrative washing machines with folded towels in a basket" loading="lazy" style="background:#c8b8a8">
+      <img class="journal__shot" data-photo="day-help" src="/images/photos/day-help.webp" width="1122" height="1402" alt="Illustrative help desk with a notice board" loading="lazy" style="background:#382828">
+    </div>
+    <ol class="journal__list">
+      <li class="story"><p class="m-text-6 story__meta"><span>Meals</span> · Every evening · 6 PM to 11 PM</p><h3 class="m-text-7">Choose tomorrow's meals tonight</h3><p class="m-text story__text">Pick breakfast, lunch and dinner for the next day from your account, with reminders at 9 PM and 10 PM. Eggs every morning, with veg and non-veg available every day.</p></li>
+      <li class="story"><p class="m-text-6 story__meta"><span>Outpasses</span> · Whenever you head out</p><h3 class="m-text-7">Heading home for the weekend? Ask in a tap</h3><p class="m-text story__text">Request an outpass or an extension from your phone. Your guardian stays in the loop, and the hostel team knows when to expect you back.</p></li>
+      <li class="story"><p class="m-text-6 story__meta"><span>Laundry</span> · Any day</p><h3 class="m-text-7">Laundry day, sorted</h3><p class="m-text story__text">Front-loading washing machines, soft water and a sunny balcony to dry your clothes.</p></li>
+      <li class="story"><p class="m-text-6 story__meta"><span>Help</span> · Any time</p><h3 class="m-text-7">A direct line to the hostel team</h3><p class="m-text story__text">Raise a ticket or send a message, see your bills, read the noticeboard and get important updates as phone notifications.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- faq: questions and answers (native <details>) -->
+<section id="faq" data-8b-section="faq" aria-labelledby="faq-title">
+  <h2 class="m-text-3 faq__title" id="faq-title" data-8b-motion="rise">Good to know<span class="m-dot" aria-hidden="true"></span></h2>
+  <div class="faq__list">
+    <details class="faq__item"><summary class="m-text-7">Who can stay at Ryuu?<span class="faq__mark" aria-hidden="true"></span></summary><p class="m-text faq__answer">Ryuu is a men's PG hostel for men aged 18 and above, both students and working professionals.</p></details>
+    <details class="faq__item"><summary class="m-text-7">What rooms are available?<span class="faq__mark" aria-hidden="true"></span></summary><p class="m-text faq__answer">There are three room types: three sharing (200 sq ft), four sharing (300 sq ft) and five sharing (440 sq ft), all air-conditioned. Every room has a balcony and an attached bathroom with hot water, and every resident gets a steel cot with a six-inch foam mattress and a steel cupboard with a safety locker. You can stay daily, weekly or monthly.</p></details>
+    <details class="faq__item"><summary class="m-text-7">What food is served?<span class="faq__mark" aria-hidden="true"></span></summary><p class="m-text faq__answer">Homemade food every day: veg and non-veg options every day, and eggs available every morning. Residents choose the next day's breakfast, lunch and dinner in their account between 6 PM and 11 PM.</p></details>
+    <details class="faq__item"><summary class="m-text-7">Is it safe?<span class="faq__mark" aria-hidden="true"></span></summary><p class="m-text faq__answer">Yes. There is 24/7 security staff and CCTV surveillance in the common areas, and the portal records attendance and outpasses and keeps guardians informed.</p></details>
+    <details class="faq__item"><summary class="m-text-7">How does admission work?<span class="faq__mark" aria-hidden="true"></span></summary><p class="m-text faq__answer">Create an account, verify your contacts and select your preferred bed. An admin reviews your application. Once approved, submit your first month's rent and refundable deposit details within 48 hours. Your booking is confirmed after payment verification. For bulk or individual bookings, you can also call our admissions team.</p></details>
+    <details class="faq__item"><summary class="m-text-7">Where is it, and when does it open?<span class="faq__mark" aria-hidden="true"></span></summary><p class="m-text faq__answer">No. 00, 80 Feet Road, 5th Block, Koramangala, Bengaluru, close to Hosur Road, Sarjapur Road, HSR Layout and Indiranagar. Ryuu is opening shortly.</p></details>
+  </div>
+</section>
+
+<!-- contact: indigo field with a big greeting, address, contacts, nearby places and the next steps (animation: scene:contact) -->
+<section id="contact" data-8b-section="contact" aria-labelledby="contact-title">
+  <h2 class="m-text-3 contact__title" id="contact-title" style="--len:9"><span class="contact__voice">Say hello</span><span class="m-dot" aria-hidden="true"></span></h2>
+  <div class="contact__grid">
+    <div class="contact__info">
+      <p class="m-text-5 contact__lead">For bulk and individual bookings, contact our admissions team.</p>
+      <a class="contact__mail" data-public="email-link" href="mailto:hello@example.com"><span data-public="email">hello@example.com</span></a>
+      <dl class="contact__places">
+        <div><dt class="m-text-7">Find us</dt><dd class="m-text" data-public="address">No. 00, 80 Feet Road, 5th Block, Koramangala, Bengaluru, Karnataka – 560034</dd></div>
+        <div><dt class="m-text-7">Call</dt><dd class="m-text"><a href="tel:+000000000000">00000 00000</a></dd><dd class="m-text"><a href="tel:+00 00000 00000">00000 00000</a></dd><dd class="m-text contact__flag" data-public="opening-line">Opening shortly</dd></div>
+      </dl>
+    </div>
+    <div class="contact__panel m-surface">
+      <h3 class="m-text-4">Close to everything</h3>
+      <p class="m-text-5">Between Hosur Road and Sarjapur Road, near HSR Layout and Indiranagar.</p>
+      <ul class="contact__list m-text">
+        <li><span>Embassy Tech Village · Bagmane Tech Park · Bellandur ORR corridor</span><span>Work</span></li>
+        <li><span>Christ University · Jyoti Nivas College · St. Joseph’s</span><span>Colleges</span></li>
+        <li><span>Leading CBSE and ICSE schools nearby</span><span>Schools</span></li>
+        <li><span>St. John’s Medical College Hospital</span><span>Hospital</span></li>
+        <li><span>Forum Mall · Indiranagar 100 Feet Road</span><span>Shopping</span></li>
+      </ul>
+      <div class="contact__actions">
+        <a class="m-btn" href="/register"><span class="m-btn__label">Start your application</span></a>
+        <a class="m-btn-2" href="tel:+000000000000"><span class="m-btn__label">Call 00000 00000</span></a>
+        <a class="m-btn-2" href="https://wa.me/910000000000?text=Hello%20Ryuu%2C%20I%27d%20like%20to%20know%20more%20about%20the%20rooms." target="_blank" rel="noopener"><span class="m-btn__label">Chat on WhatsApp</span></a>
+        <a class="m-btn-2" href="https://www.google.com/maps/search/?api=1&amp;query=12.9352%2C77.6245" target="_blank" rel="noopener"><span class="m-btn__label">Open in Google Maps</span></a>
+      </div>
+    </div>
+  </div>
+  <form class="visit m-surface" id="visit-form" novalidate>
+    <div class="visit__head"><h3 class="m-text-4">Book a visit</h3><p class="m-text-5">Come and see the rooms with your family. Pick a day and we’ll call you to confirm.</p></div>
+    <div class="visit__grid">
+      <label><span>Your name</span><input name="name" required maxlength="120" autocomplete="name"></label>
+      <label><span>Phone number</span><input name="phone" type="tel" required maxlength="20" autocomplete="tel"></label>
+      <label><span>Email (optional)</span><input name="email" type="email" maxlength="200" autocomplete="email"></label>
+      <label><span>Preferred date</span><input name="preferredDate" type="date" required></label>
+      <label><span>Preferred time</span><select name="preferredTime" required><option>Morning (10 AM – 12 PM)</option><option>Afternoon (12 – 4 PM)</option><option>Evening (4 – 7 PM)</option></select></label>
+      <label class="visit__wide"><span>Anything we should know? (optional)</span><textarea name="message" rows="2" maxlength="600"></textarea></label>
+      <label class="visit__trap" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label>
+    </div>
+    <div class="visit__foot"><button class="m-btn" type="submit"><span class="m-btn__label">Request a visit</span></button><p class="visit__status m-text" role="status" aria-live="polite"></p></div>
+  </form>
+</section>
+</main>
+
+<!-- footer: closing word "Home" with the round photo full stop, link columns, logo, copyright and the designer credit (animation: scene:footer) -->
+<footer id="footer" data-8b-section="footer">
+  <p class="m-text-2 footer__bye" style="--len:4"><span class="footer__word">Home</span><span class="footer__period" aria-hidden="true"><span class="footer__aperture"><img class="footer__img" data-photo="footer-round" src="/images/photos/hero-round.webp" width="1200" height="1200" alt="" loading="lazy" style="background:#b4560a"><span class="footer__tint"></span></span></span></p>
+  <div class="footer__grid">
+    <nav class="footer__col" aria-label="Footer">
+      <p class="m-text-6 footer__label">Explore</p>
+      <a class="m-link-2" href="#work">Inside Ryuu</a>
+      <a class="m-link-2" href="#again">Amenities</a>
+      <a class="m-link-2" href="#capabilities">Rooms and care</a>
+      <a class="m-link-2" href="#method">Admission</a>
+      <a class="m-link-2" href="#faq">Good to know</a>
+    </nav>
+    <div class="footer__col">
+      <p class="m-text-6 footer__label">Portal</p>
+      <a class="m-link-2" href="/register">Apply to stay</a>
+      <a class="m-link-2" href="/login">Resident login</a>
+      <a class="m-link-2" href="/login">Guardian login</a>
+    </div>
+    <div class="footer__col">
+      <p class="m-text-6 footer__label">Talk</p>
+      <a class="m-link-2" data-public="email-link" href="mailto:hello@example.com"><span data-public="email">hello@example.com</span></a>
+      <a class="m-link-2" href="tel:+000000000000">00000 00000</a>
+      <a class="m-link-2" href="tel:+00 00000 00000">00000 00000</a>
+      <a class="m-link-2" href="https://wa.me/910000000000?text=Hello%20Ryuu%2C%20I%27d%20like%20to%20know%20more%20about%20the%20rooms." target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="m-link-2" href="https://www.google.com/maps/search/?api=1&amp;query=12.9352%2C77.6245" target="_blank" rel="noopener">Open in Google Maps</a>
+      <span class="m-link-2">Koramangala, Bengaluru 560034</span>
+    </div>
+    <div class="footer__logo">
+      <img src="/images/ryuu-logo.webp" width="1325" height="924" alt="Ryuu — Cool rooms. Calm days. Your city" loading="lazy">
+      <p class="m-text-6">Air-conditioned men's PG hostel in Koramangala, Bengaluru.</p>
+    </div>
+  </div>
+  <div class="footer__legal m-text-6"><p>© 2026 Ryuu</p><p>Made for your next chapter in Bengaluru</p></div>
+</footer>
+
+<script src="/site/libs/gsap.min.js"></script>
+<script src="/site/libs/ScrollTrigger.min.js"></script>
+<script src="/site/libs/lenis.min.js"></script>
+<script data-8b-part="section-script:public-content">
+(() => {
+  /* Hostel details set by the admin in Hostel settings. The page already shows the pamphlet details; old placeholder values are ignored. */
+  const OLD_PLACEHOLDERS = ['0000000000', 'hello@example.com'];
+  const useful = value => typeof value === 'string' && value.trim() && !OLD_PLACEHOLDERS.includes(value) && !value.startsWith('Sowripalayam,');
+  const set = (key, fn) => document.querySelectorAll(`[data-public="${key}"]`).forEach(fn);
+  fetch('/api/public', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).then(data => {
+    if (!data) return;
+    if (useful(data.email)) { set('email', el => { el.textContent = data.email; }); set('email-link', el => { el.href = `mailto:${data.email}`; }); }
+    if (useful(data.address)) set('address', el => { el.textContent = data.address; });
+    if (useful(data.openingDate)) { set('opening', el => { el.textContent = data.openingDate; }); set('opening-line', el => { el.textContent = `Opening: ${data.openingDate}`; }); }
+  }).catch(() => {});
+})();
+</script>
+<script data-8b-part="section-script:extras">
+(() => {
+  fetch('/api/public', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(data => {
+    if (!data) return;
+    document.querySelectorAll('[data-free-sharing]').forEach(el => {
+      const n = data.freeBySharing && data.freeBySharing[el.dataset.freeSharing];
+      if (n === undefined) return;
+      el.textContent = n > 0 ? (n === 1 ? '1 bed left' : n + ' beds left') : 'Fully booked · join the waitlist';
+      el.classList.toggle('is-full', n === 0); el.hidden = false;
+    });
+  }).catch(() => {});
+  const form = document.getElementById('visit-form'); if (!form) return;
+  const date = form.elements.preferredDate; const today = new Date(Date.now() + 19800000).toISOString().slice(0, 10); date.min = today; date.value = date.value || today;
+  const status = form.querySelector('.visit__status');
+  form.addEventListener('submit', async e => {
+    e.preventDefault(); status.classList.remove('is-error');
+    if (!form.reportValidity()) return;
+    const body = Object.fromEntries(new FormData(form)); body.action = 'visit';
+    const button = form.querySelector('button'); button.disabled = true; status.textContent = 'Sending…';
+    try {
+      const res = await fetch('/api/public', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(out.error || 'Something went wrong. Please call us instead.');
+      form.reset(); date.value = today; status.textContent = out.message || 'Thank you. We’ll call you to confirm.';
+    } catch (err) { status.classList.add('is-error'); status.textContent = err.message; }
+    finally { button.disabled = false; }
+  });
+})();
+</script>
+<script data-8b-part="section-script:footer">
+(() => {
+  const footer = document.getElementById('footer');
+  if ('IntersectionObserver' in window) new IntersectionObserver(([entry]) => footer.classList.toggle('is-offscreen', !entry.isIntersecting)).observe(footer);
+})();
+</script>
+<script data-8b-part="section-script:pwa">
+if ('serviceWorker' in navigator && window.isSecureContext) navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' }).catch(() => {});
+</script>
+<script data-8b-part="section-script:navigation">
+(() => {
+  const nav = document.getElementById('navigation');
+  const toggle = nav.querySelector('.nav__menu');
+  const menu = nav.querySelector('.menu');
+  const close = menu.querySelector('.menu__close');
+  const setOpen = open => {
+    menu.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open) { window.lenis?.stop(); close.focus(); } else { window.lenis?.start(); toggle.focus(); }
+  };
+  toggle.addEventListener('click', () => setOpen(true));
+  close.addEventListener('click', () => setOpen(false));
+  menu.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setOpen(false);
+    if (event.key !== 'Tab') return;
+    const items = [...menu.querySelectorAll('a, button')];
+    const first = items[0], last = items[items.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.hidden = true; toggle.setAttribute('aria-expanded', 'false'); window.lenis?.start(); }));
+})();
+</script>
+<script data-8b-part="section-script:hero">
+(() => {
+  const hero = document.getElementById('hero');
+  if (!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(([entry]) => hero.classList.toggle('is-offscreen', !entry.isIntersecting)).observe(hero);
+})();
+</script>
+<script data-8b-part="motion-queue">
+(() => {
+  'use strict';
+  const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  const parsed = document.readyState === 'loading' ? new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve, { once: true })) : Promise.resolve();
+  const ready = () => Promise.all([fonts, parsed]).then(() => firsts);
+  const nextTask = () => window.scheduler?.yield?.() ?? new Promise(resolve => setTimeout(resolve));
+  const refresh = () => {
+    if (typeof window.refreshScroll === 'function') return window.refreshScroll();
+    window.ScrollTrigger?.sort(); window.ScrollTrigger?.refresh();
+  };
+  const run = (setup, name) => {
+    for (const trigger of window.ScrollTrigger?.getAll() || []) if (!trigger.end && window.ScrollTrigger.getAll().includes(trigger)) trigger.refresh(0, 1);
+    const context = window.gsap.context(() => {});
+    const log = new MutationObserver(() => {});
+    log.observe(document.documentElement, { attributes: true, attributeOldValue: true, subtree: true });
+    let failure = null, records;
+    try { context.add(() => { try { setup(); } catch (error) { failure = error; } }); }
+    finally { records = log.takeRecords(); log.disconnect(); }
+    if (!failure) return true;
+    try { context.revert(); } catch (error) { console.error(name, 'revert failed', error); }
+    for (const { target, attributeName, oldValue } of records.reverse()) {
+      const now = target.getAttribute(attributeName);
+      if (oldValue == null) { if (now != null) target.removeAttribute(attributeName); }
+      else if (now !== oldValue) target.setAttribute(attributeName, oldValue);
+    }
+    console.error(name, failure);
+    return false;
+  };
+  let firsts = Promise.resolve(), tail = null, pending = 0, lazy = null, building = 0;
+  window.queueMotion = (setup, { first = false, near, id } = {}) => {
+    if (!window.gsap || typeof setup !== 'function') return;
+    const name = id || document.currentScript?.getAttribute('data-8b-part') || 'motion';
+    if (near instanceof Element && window.IntersectionObserver) {
+      const watch = new IntersectionObserver(entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        watch.disconnect();
+        building++;
+        lazy = (lazy || ready()).then(nextTask).then(() => run(setup, name)).finally(() => { if (!--building) refresh(); });
+      }, { rootMargin: '100% 0px' });
+      watch.observe(near);
+      return;
+    }
+    if (first) firsts = firsts.then(() => fonts).then(() => { if (!run(setup, name)) refresh(); });
+    else {
+      pending++;
+      tail = (tail || ready()).then(nextTask).then(() => run(setup, name))
+        .finally(() => { if (!--pending) refresh(); });
+    }
+    window.motionReady = Promise.all([firsts, tail]);
+  };
+  window.adjacent = (a, b) => {
+    const order = [...document.querySelectorAll('[data-8b-section]')].filter(section => section.getAttribute('data-8b-section') !== 'navigation').map(section => section.id);
+    return order.indexOf(a) >= 0 && order[order.indexOf(a) + 1] === b;
+  };
+})();
+</script>
+<script data-8b-part="page-init">
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
+function refreshScroll() {
+  ScrollTrigger.sort();
+  ScrollTrigger.refresh();
+}
+window.refreshScroll = refreshScroll;
+gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  const nav = document.getElementById('navigation');
+  const lenis = window.lenis = new Lenis({ lerp: 0.09, anchors: { offset: -(nav ? nav.offsetHeight : 0) } });
+  const tick = time => lenis.raf(time * 1000);
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(tick);
+  gsap.ticker.lagSmoothing(0);
+  return () => { gsap.ticker.remove(tick); gsap.ticker.lagSmoothing(500, 33); lenis.destroy(); window.lenis = null; };
+});
+</script>
+<script data-8b-part="motion">
+const effects = {
+  rise(element, vars = {}) {
+    const dot = element.querySelector('.m-dot');
+    const timeline = gsap.timeline(vars);
+    timeline.fromTo(element, { yPercent: 38, clipPath: 'inset(0% -6% 100% -6%)' }, { yPercent: 0, clipPath: 'inset(-30% -6% -30% -6%)', duration: 0.95, ease: 'expo.out', clearProps: 'clipPath,transform' }, 0);
+    if (dot) timeline.fromTo(dot, { scale: 0, yPercent: -260 }, { scale: 1, yPercent: 0, duration: 0.75, ease: 'back.out(2.2)', clearProps: 'transform' }, 0.42);
+    return timeline;
+  },
+  ink(element, vars = {}) {
+    const words = element.querySelectorAll('.ink__word');
+    return gsap.timeline(vars).fromTo(words, { opacity: 0.16 }, { opacity: 1, duration: 0.3, stagger: 0.06, ease: 'none' });
+  },
+  iris(element, vars = {}) {
+    const image = element.querySelector('img');
+    const timeline = gsap.timeline(vars);
+    timeline.fromTo(element, { clipPath: 'circle(0% at 50% 50%)' }, { clipPath: 'circle(75% at 50% 50%)', duration: 1.15, ease: 'expo.inOut', clearProps: 'clipPath' }, 0);
+    if (image) timeline.fromTo(image, { scale: 1.2 }, { scale: 1, duration: 1.5, ease: 'expo.out', clearProps: 'transform' }, 0.15);
+    return timeline;
+  }
+};
+function layoutBox(element) {
+  let x = 0, y = 0, node = element;
+  while (node) { x += node.offsetLeft; y += node.offsetTop; node = node.offsetParent; }
+  return { x, y, w: element.offsetWidth, h: element.offsetHeight, cx: x + element.offsetWidth / 2, cy: y + element.offsetHeight / 2 };
+}
+function splitWords(element) {
+  const original = element.innerHTML;
+  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const fragment = document.createDocumentFragment();
+    node.textContent.split(/(\s+)/).forEach(part => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) { fragment.append(part); return; }
+      const word = document.createElement('span');
+      word.className = 'ink__word';
+      word.textContent = part;
+      fragment.append(word);
+    });
+    node.replaceWith(fragment);
+  });
+  return () => { element.innerHTML = original; };
+}
+document.querySelectorAll('[data-8b-section]').forEach(section => {
+  const bound = name => [...section.querySelectorAll(`[data-8b-motion~="${name}"]`)];
+  const rise = bound('rise'), ink = bound('ink'), iris = bound('iris');
+  if (!rise.length && !ink.length && !iris.length) return;
+  const first = section.getBoundingClientRect().top < innerHeight;
+  if (rise.length) queueMotion(() => gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    rise.forEach((element, index) => ScrollTrigger.create({ id: `effect:rise:${section.id}:${index}`, trigger: element, start: 'top 88%', once: true, animation: effects.rise(element, { paused: true }) }));
+  }), { first, id: `effect:rise:${section.id}` });
+  if (ink.length) queueMotion(() => gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const reverts = ink.map(splitWords);
+    ink.forEach((element, index) => ScrollTrigger.create({ id: `effect:ink:${section.id}:${index}`, trigger: element, start: 'top 88%', end: 'bottom 68%', scrub: 0.4, animation: effects.ink(element) }));
+    return () => reverts.forEach(revert => revert());
+  }), { first, id: `effect:ink:${section.id}` });
+  if (iris.length) queueMotion(() => gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    iris.forEach((element, index) => ScrollTrigger.create({ id: `effect:iris:${section.id}:${index}`, trigger: element, start: 'top 86%', once: true, animation: effects.iris(element, { paused: true }) }));
+  }), { first, id: `effect:iris:${section.id}` });
+});
+</script>
+<script data-8b-part="scene:hero">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    if (!adjacent('hero', 'statement')) return;
+    const hero = document.getElementById('hero');
+    const target = document.getElementById('statement').querySelector('.statement__dot');
+    const aperture = hero.querySelector('.hero__aperture');
+    const geometry = () => {
+      const from = layoutBox(aperture), to = layoutBox(target);
+      return { x: to.cx - from.cx, y: to.cy - from.cy, scale: to.w / from.w };
+    };
+    gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: 'hero:exit', trigger: hero, start: 'bottom bottom', end: 'bottom 30%', scrub: true, invalidateOnRefresh: true } })
+      .to(aperture, { x: () => geometry().x, y: () => geometry().y, ease: 'power1.inOut', duration: 1 }, 0)
+      .to(aperture, { scale: () => geometry().scale, ease: 'power3.in', duration: 1 }, 0)
+      .to(hero.querySelector('.hero__tint'), { opacity: 1, ease: 'power2.in', duration: 0.6 }, 0.4)
+      .to(hero.querySelector('.hero__orbit'), { opacity: 0, duration: 0.3 }, 0)
+      .to(hero.querySelector('.hero__word'), { xPercent: () => (matchMedia('(min-width: 900px) and (orientation: landscape)').matches ? -14 : 0), ease: 'power1.in', duration: 1 }, 0)
+      .to(hero.querySelector('.hero__intro'), { y: -70, ease: 'power1.in', duration: 1 }, 0);
+  });
+}, { first: true, id: 'scene:hero' });
+</script>
+<script data-8b-part="scene:statement">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const statement = document.getElementById('statement');
+    const lines = statement.querySelectorAll('.statement__line');
+    if (adjacent('hero', 'statement')) {
+      gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: 'statement:entry', trigger: statement, start: 'top bottom', end: 'top 30%', scrub: true } })
+        .fromTo(lines, { yPercent: 85, xPercent: index => (index ? 9 : -6) }, { yPercent: 0, xPercent: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out' }, 0)
+        .fromTo(statement.querySelector('.statement__dot'), { scale: 0 }, { scale: 1, duration: 0.1 }, 0.9);
+    }
+    const items = statement.querySelectorAll('.statement__index li');
+    gsap.from(items, { yPercent: 70, opacity: 0, duration: 0.8, stagger: 0.07, ease: 'expo.out', scrollTrigger: { id: 'statement:index', trigger: statement.querySelector('.statement__index'), start: 'top 85%', once: true } });
+  });
+}, { id: 'scene:statement' });
+</script>
+<script data-8b-part="scene:work">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const work = document.getElementById('work');
+    const track = work.querySelector('.work__track');
+    const frame = work.querySelector('.work__window');
+    work.classList.add('is-track');
+    const stage = work.querySelector('.work__stage');
+    const run = () => Math.max(0, track.offsetWidth - (work.clientWidth - 2 * parseFloat(getComputedStyle(stage).paddingLeft)));
+    const setRun = () => work.style.setProperty('--run', `${Math.round(run())}px`);
+    setRun();
+    ScrollTrigger.addEventListener('refreshInit', setRun);
+    gsap.fromTo(work.querySelector('.work__plate'), { clipPath: 'inset(0% 3.2% 0% 3.2% round 44px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'power1.out', scrollTrigger: { id: 'work:plate', trigger: work, start: 'top bottom', end: 'top 15%', scrub: true } });
+    const timeline = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: 'work', trigger: work, start: 'top top', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true } });
+    timeline.to(track, { x: () => -run() }, 0);
+    work.querySelectorAll('.case__img').forEach(image => timeline.fromTo(image, { xPercent: -5 }, { xPercent: 5 }, 0));
+    if (adjacent('work', 'again')) {
+      const cases = [...track.querySelectorAll('.case')];
+      const radius = () => (innerWidth < 700 ? innerWidth * 2.1 : innerWidth * 0.95);
+      const bend = card => {
+        const offset = layoutBox(frame).x + card.offsetLeft + card.offsetWidth / 2 - run() - innerWidth / 2;
+        const angle = offset / radius();
+        return { x: radius() * Math.sin(angle) - offset, y: radius() * (1 - Math.cos(angle)), rotation: angle * 180 / Math.PI };
+      };
+      const exit = gsap.timeline({ defaults: { ease: 'power1.in' }, scrollTrigger: { id: 'work:exit', trigger: work, start: 'bottom bottom', end: 'bottom 30%', scrub: true, invalidateOnRefresh: true } });
+      exit.to(frame, { x: () => -innerWidth * 0.2, duration: 1 }, 0);
+      cases.forEach(card => exit.to(card, { x: () => bend(card).x, y: () => bend(card).y, rotation: () => bend(card).rotation, duration: 1 }, 0));
+    }
+    return () => { work.classList.remove('is-track'); work.style.removeProperty('--run'); ScrollTrigger.removeEventListener('refreshInit', setRun); };
+  });
+}, { id: 'scene:work' });
+</script>
+<script data-8b-part="scene:again">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const again = document.getElementById('again');
+    const stage = again.querySelector('.again__stage');
+    const head = again.querySelector('.again__head');
+    const swing = again.querySelector('.again__swing');
+    const wheel = again.querySelector('.again__wheel');
+    const cards = [...wheel.querySelectorAll('.partner')];
+    again.classList.add('is-wheel');
+    cards.forEach((card, index) => card.style.setProperty('--i', index));
+    let step = 0, arcTop = 0, radius = 1;
+    const measure = () => {
+      const width = innerWidth, height = stage.offsetHeight;
+      const headBottom = head.offsetTop + head.offsetHeight;
+      const room = height - headBottom - innerHeight * 0.04;
+      const card = Math.max(180, Math.min(width * (width < 700 ? 0.7 : 0.28), (room - 32) / 1.25));
+      arcTop = headBottom + Math.max(28, (room - card * 1.25) * 0.4);
+      radius = Math.max(width * 0.95, card * 3.3);
+      step = 2 * Math.asin((card + Math.max(18, width * 0.024)) / (2 * radius)) * 180 / Math.PI;
+      again.style.setProperty('--card', `${card.toFixed(1)}px`);
+      again.style.setProperty('--radius', `${radius.toFixed(1)}px`);
+      again.style.setProperty('--step', `${step.toFixed(3)}deg`);
+      again.style.setProperty('--arc-top', `${arcTop.toFixed(1)}px`);
+      again.style.setProperty('--spin', `${Math.round(cards.length * innerHeight * 0.42)}px`);
+    };
+    measure();
+    ScrollTrigger.addEventListener('refreshInit', measure);
+    gsap.fromTo(wheel, { rotation: () => step * 0.55 }, { rotation: () => -(cards.length - 0.45) * step, ease: 'none', scrollTrigger: { id: 'again', trigger: again, start: 'top 30%', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true } });
+    if (adjacent('work', 'again')) {
+      gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: 'again:entry', trigger: again, start: 'top bottom', end: 'top 30%', scrub: true, invalidateOnRefresh: true } })
+        .fromTo(swing, { rotation: () => Math.max(4, Math.asin(Math.min(1, innerWidth * 0.3 / radius)) * 180 / Math.PI - step * 0.55) }, { rotation: 0, ease: 'power1.out' }, 0)
+        .fromTo(swing, { y: () => -(arcTop - 40) }, { y: 0, ease: 'power2.in' }, 0)
+        .fromTo(head, { yPercent: 45 }, { yPercent: 0, ease: 'power2.out' }, 0);
+    }
+    return () => {
+      ScrollTrigger.removeEventListener('refreshInit', measure);
+      again.classList.remove('is-wheel');
+      ['--card', '--radius', '--step', '--arc-top', '--spin'].forEach(name => again.style.removeProperty(name));
+      cards.forEach(card => card.style.removeProperty('--i'));
+    };
+  });
+}, { id: 'scene:again' });
+</script>
+<script data-8b-part="scene:capabilities">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const section = document.getElementById('capabilities');
+    const cards = [...section.querySelectorAll('.service')];
+    section.classList.add('is-deck');
+    cards.forEach((card, index) => card.style.setProperty('--i', index));
+    cards.forEach((card, index) => {
+      const next = cards[index + 1];
+      if (!next) return;
+      gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: `capabilities:${index}`, trigger: next, start: 'top bottom', end: () => `top ${parseFloat(getComputedStyle(next).top) || 0}px`, scrub: true, invalidateOnRefresh: true } })
+        .to(card, { scale: 0.9 }, 0)
+        .to(card.querySelector('.service__shade'), { opacity: 0.55 }, 0);
+    });
+    return () => { section.classList.remove('is-deck'); cards.forEach(card => card.style.removeProperty('--i')); };
+  });
+}, { id: 'scene:capabilities' });
+</script>
+<script data-8b-part="scene:method">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const method = document.getElementById('method');
+    const steps = [...method.querySelectorAll('.step')];
+    const stations = [...method.querySelectorAll('.method__station')];
+    method.classList.add('is-cycle');
+    const timeline = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: 'method', trigger: method.querySelector('.method__steps'), start: 'top 62%', end: 'bottom 62%', scrub: true } });
+    timeline.fromTo(method.querySelector('.method__arc'), { attr: { 'stroke-dashoffset': 1 } }, { attr: { 'stroke-dashoffset': 0 }, duration: 1 }, 0)
+      .fromTo(method.querySelector('.method__arm'), { rotation: 0 }, { rotation: 360, duration: 1 }, 0);
+    steps.forEach((step, index) => {
+      const at = index / steps.length;
+      timeline.fromTo(step, { opacity: 0.2 }, { opacity: 1, duration: 0.07 }, Math.max(0, at - 0.03));
+      if (stations[index]) timeline.fromTo(stations[index], { scale: 0.4 }, { scale: 1.35, duration: 0.05, ease: 'back.out(3)' }, at).to(stations[index], { scale: 1, duration: 0.08 }, at + 0.06);
+    });
+    return () => method.classList.remove('is-cycle');
+  });
+}, { id: 'scene:method' });
+</script>
+<script data-8b-part="scene:studio">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const collage = document.querySelector('#studio .studio__collage');
+    const shots = [...collage.querySelectorAll('.shot')];
+    const tilt = [-8, 6, -4, 9, -6];
+    const offset = (shot, axis) => {
+      const centre = axis === 'x' ? collage.offsetWidth / 2 : Math.min(collage.offsetHeight / 2, innerHeight * 0.45);
+      const own = axis === 'x' ? shot.offsetLeft + shot.offsetWidth / 2 : shot.offsetTop + shot.offsetHeight / 2;
+      return centre - own;
+    };
+    const timeline = gsap.timeline({ defaults: { ease: 'power2.out' }, scrollTrigger: { id: 'studio', trigger: collage, start: 'top 82%', end: () => (innerWidth < 900 ? 'top 10%' : 'center 55%'), scrub: true, invalidateOnRefresh: true } });
+    shots.forEach((shot, index) => timeline.fromTo(shot, { x: () => offset(shot, 'x'), y: () => offset(shot, 'y'), rotation: tilt[index % tilt.length], scale: 0.66 }, { x: 0, y: 0, rotation: 0, scale: 1, duration: 1 }, (shots.length - 1 - index) * 0.08));
+  });
+}, { id: 'scene:studio' });
+</script>
+<script data-8b-part="scene:journal">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const journal = document.getElementById('journal');
+    const shots = [...journal.querySelectorAll('.journal__shot')];
+    const stories = [...journal.querySelectorAll('.story')];
+    journal.classList.add('is-swap');
+    stories.forEach((story, index) => {
+      const timeline = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: `journal:${index}`, trigger: story, start: 'top 84%', end: 'top 50%', scrub: true } });
+      timeline.fromTo(story, { opacity: 0.25 }, { opacity: 1, duration: 0.8 }, 0);
+      if (index && shots[index]) timeline.fromTo(shots[index], { clipPath: 'circle(0% at 50% 50%)' }, { clipPath: 'circle(75% at 50% 50%)', ease: 'power1.inOut', duration: 1 }, 0);
+    });
+    return () => journal.classList.remove('is-swap');
+  });
+}, { id: 'scene:journal' });
+</script>
+<script data-8b-part="scene:contact">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const contact = document.getElementById('contact');
+    const voice = contact.querySelector('.contact__voice');
+    gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: 'contact', trigger: contact, start: 'top bottom', end: 'top 15%', scrub: true } })
+      .fromTo(voice, { fontWeight: 400, scale: 0.82, transformOrigin: '0% 100%' }, { fontWeight: 800, scale: 1, duration: 1 }, 0)
+      .fromTo(contact.querySelector('.contact__title .m-dot'), { scale: 0, yPercent: -400 }, { scale: 1, yPercent: 0, duration: 0.25, ease: 'power2.in' }, 0.75);
+  });
+}, { id: 'scene:contact' });
+</script>
+<script data-8b-part="scene:footer">
+queueMotion(() => {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const footer = document.getElementById('footer');
+    const aperture = footer.querySelector('.footer__aperture');
+    const dot = () => footer.querySelector('.footer__period').offsetWidth / aperture.offsetWidth;
+    gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { id: 'footer', trigger: footer.querySelector('.footer__bye'), start: 'bottom bottom', end: 'bottom 55%', scrub: true, invalidateOnRefresh: true } })
+      .fromTo(aperture, { scale: dot }, { scale: 1, ease: 'power2.inOut', duration: 1 }, 0)
+      .fromTo(footer.querySelector('.footer__tint'), { opacity: 1 }, { opacity: 0, duration: 0.5 }, 0.45)
+      .fromTo(footer.querySelector('.footer__word'), { yPercent: 30 }, { yPercent: 0, ease: 'power2.out', duration: 0.8 }, 0);
+  });
+}, { id: 'scene:footer' });
+</script>
+<script data-8b-part="section-script:amenity-view">
+(() => {
+  const dialog = document.getElementById('amenity-view');
+  const cards = [...document.querySelectorAll('#again .partner__card')];
+  if (!dialog || !cards.length || typeof dialog.showModal !== 'function') return;
+  const img = dialog.querySelector('img'), num = dialog.querySelector('.amenity-view__num'), title = dialog.querySelector('.amenity-view__title');
+  const line = dialog.querySelector('.amenity-view__line'), count = dialog.querySelector('.amenity-view__count'), tag = dialog.querySelector('.amenity-view__tag');
+  let current = 0, opener = null;
+  const show = index => {
+    current = (index + cards.length) % cards.length;
+    const card = cards[current], src = card.querySelector('.partner__img');
+    img.src = src.currentSrc || src.src; img.alt = src.alt;
+    img.width = src.width; img.height = src.height; img.style.background = src.style.background;
+    num.textContent = card.querySelector('.partner__year').textContent;
+    title.textContent = card.querySelector('.partner__name').textContent;
+    line.textContent = card.querySelector('.partner__line').textContent;
+    tag.hidden = !card.classList.contains('is-concept');
+    count.textContent = (current + 1) + ' of ' + cards.length;
+  };
+  cards.forEach((card, index) => {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-haspopup', 'dialog');
+    card.setAttribute('aria-label', card.querySelector('.partner__name').textContent + ': open larger view');
+    const open = () => { opener = card; show(index); dialog.showModal(); if (window.lenis) window.lenis.stop(); };
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(); } });
+  });
+  dialog.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click', () => show(current + Number(button.dataset.step))));
+  dialog.querySelector('.amenity-view__close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight') show(current + 1);
+    if (event.key === 'ArrowLeft') show(current - 1);
+  });
+  dialog.addEventListener('close', () => { if (window.lenis) window.lenis.start(); if (opener) opener.focus({ preventScroll: true }); });
+})();
+</script>
+</body>
+</html>

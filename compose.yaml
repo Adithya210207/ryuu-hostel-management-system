@@ -1,0 +1,66 @@
+services:
+  database:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ryuu
+      POSTGRES_DB: ryuu
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a strong database password}
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ryuu -d ryuu"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  web:
+    build: .
+    restart: unless-stopped
+    init: true
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    env_file: .env.production
+    environment:
+      NODE_ENV: production
+      DEMO_MODE: 'false'
+      DATABASE_URL: postgres://ryuu:${POSTGRES_PASSWORD}@database:5432/ryuu
+      DATA_DIR: /app/.data
+      CLAMSCAN_PATH: /usr/bin/clamscan
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/status').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 15s
+      start_period: 45s
+      retries: 3
+    ports: ["127.0.0.1:3000:3000"]
+    volumes:
+      - private-files:/app/.data
+      - backups:/app/backups
+      - antivirus:/var/lib/clamav:ro
+    depends_on:
+      database: {condition: service_healthy}
+  worker:
+    build: .
+    restart: unless-stopped
+    init: true
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    command: ["npm", "run", "worker"]
+    env_file: .env.production
+    environment:
+      NODE_ENV: production
+      DEMO_MODE: 'false'
+      DATABASE_URL: postgres://ryuu:${POSTGRES_PASSWORD}@database:5432/ryuu
+      DATA_DIR: /app/.data
+    volumes: ["private-files:/app/.data"]
+    depends_on:
+      database: {condition: service_healthy}
+  antivirus:
+    image: clamav/clamav:stable
+    restart: unless-stopped
+    volumes: ["antivirus:/var/lib/clamav"]
+volumes:
+  database:
+  private-files:
+  backups:
+  antivirus:

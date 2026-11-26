@@ -1,0 +1,15 @@
+'use client';
+import {useState} from 'react';
+import {Button,Empty,PageTitle,Panel,Search,Tabs,type PageProps} from './UI';
+import {date} from './api';
+import InstallApp from '../pwa/InstallApp';
+import PhoneNotifications from '../pwa/PhoneNotifications';
+import '../../app/pwa.css';
+export default function Notifications({data,act,navigate}:PageProps){
+ const [filter,setFilter]=useState('all'),[query,setQuery]=useState(''),[limit,setLimit]=useState(30),[error,setError]=useState('');
+ const unread=data.notifications.filter(n=>!n.readAt).length;
+ const entries=data.notifications.filter(n=>(filter!=='unread'||!n.readAt)&&`${n.title} ${n.body}`.toLowerCase().includes(query.toLowerCase())).sort((a,b)=>b.createdAt.localeCompare(a.createdAt));
+ async function read(id?:string){setError('');try{await act('notification.read',id?{notificationId:id}:{},id?'Notification marked as read.':'All notifications marked as read.');}catch(e){setError((e as Error).message);}}
+ function destination(key:string){if(key.startsWith('message:'))return'messages';if(key.startsWith('ticket'))return'tickets';if(key.startsWith('notice:'))return'notices';if(key.startsWith('meal'))return'meals';if(key.startsWith('outpass'))return'outpasses';if(key.startsWith('attendance'))return'attendance';if(/payment|bill/.test(key))return'payments';return'overview';}
+ return <><PageTitle eyebrow="STAY IN THE KNOW" title="Notifications" text="Every message, reminder and update, in one place." action={<Button secondary icon="check" disabled={!unread} onClick={()=>read()}>Mark all as read</Button>}/><Panel title="Ryuu on your phone" eyebrow="RYUU, WHEREVER YOU ARE"><div className="jn-device-grid"><InstallApp/><PhoneNotifications/></div></Panel><Panel title="Notification history" eyebrow={`${unread} UNREAD · ${data.notifications.length} TOTAL`}><div className="jn-notification-tools"><Tabs values={[{value:'all',label:'All updates'},{value:'unread',label:'Unread'}]} selected={filter} set={v=>{setFilter(v);setLimit(30);}}/><Search value={query} onChange={v=>{setQuery(v);setLimit(30);}} placeholder="Search notification history…"/></div>{error&&<p role="alert" className="jn-device-error">{error}</p>}{entries.length?<div className="jn-notification-history">{entries.slice(0,limit).map(n=><article key={n.id} className={n.readAt?'':'is-unread'}><div><span className="jn-eyebrow">{n.readAt?'READ':'NEW'}</span><h3>{n.title}</h3><p>{n.body}</p><time dateTime={n.createdAt}>{date(n.createdAt,true)}</time></div><div className="jn-notification-row-actions"><button className="jn-text-button" onClick={async()=>{await read(n.id);navigate(n.link.split('view=')[1]?.split('&')[0]||destination(n.eventKey));}}>Open update ↗</button>{!n.readAt&&<button className="jn-text-button" onClick={()=>read(n.id)}>Mark as read</button>}</div></article>)}</div>:<Empty icon="bell" title="All caught up">{query?'No updates match your search.':'New messages and hostel updates will appear here.'}</Empty>}{entries.length>limit&&<Button secondary onClick={()=>setLimit(v=>v+30)}>Show more</Button>}</Panel></>;
+}

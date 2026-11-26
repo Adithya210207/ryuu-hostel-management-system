@@ -1,0 +1,94 @@
+'use client';
+
+import { useEffect, useState, type FormEvent } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Icon from './Icon';
+import { post, upload } from './api';
+import { useFormStepMotion } from './Motion';
+import '../../app/portal.css';
+import './portal-motion.css';
+
+type FormFields = Record<string, string>;
+const ADMISSION_KEYS = ['maritalStatus', 'nationality', 'idType', 'idNumber', 'currentAddress', 'city', 'state', 'pincode', 'designation', 'officeAddress', 'officeContact', 'monthlyIncome', 'emergencyName', 'emergencyRelationship', 'emergencyPhone', 'emergencyAddress', 'acPreference', 'roomType', 'stayDuration', 'foodType', 'parking'];
+const EXTRA_DOCUMENTS = [
+  { key: 'photo', field: 'photoDocumentId', purpose: 'photo', title: 'Passport-size photo', hint: 'JPG or PNG', accept: 'image/jpeg,image/png,image/webp', required: true },
+  { key: 'employment', field: 'employmentProofId', purpose: 'employment_proof', title: 'Employment / college proof', hint: 'Offer letter, employee ID or college ID', accept: 'application/pdf,image/*', required: false },
+  { key: 'addressProof', field: 'addressProofId', purpose: 'address_proof', title: 'Address proof', hint: 'PDF or photo', accept: 'application/pdf,image/*', required: false },
+  { key: 'medical', field: 'medicalCertificateId', purpose: 'medical', title: 'Medical fitness certificate', hint: 'PDF or photo', accept: 'application/pdf,image/*', required: false },
+];
+export default function Auth({ registration = false, demoEnabled = false }: { registration?: boolean; demoEnabled?: boolean }) {
+  const router = useRouter();
+  const [step, setStep] = useState(0);
+  const [mode, setMode] = useState<'password' | 'otp' | 'reset'>('password');
+  const [fields, setFields] = useState<FormFields>({ profession: 'student', guardianRelationship: 'Parent', channel: 'email', nationality: 'Indian', idType: 'aadhaar' });
+  const [files, setFiles] = useState<Record<string, File>>({});
+  const [challenge, setChallenge] = useState<any>(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
+  const [created, setCreated] = useState(false);
+  const formMotion = useFormStepMotion(registration ? `register-${step}` : `${mode}-${challenge ? 'code' : 'identity'}`);
+  useEffect(()=>{router.prefetch('/portal');},[router]);
+  const update = (key: string, value: string) => setFields(f => ({ ...f, [key]: value }));
+  const maxDob = new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().slice(0, 10);
+  const field = (name: string, title: string, type = 'text', opts: { optional?: boolean; placeholder?: string; max?: string; minLength?: number } = {}) => <label className="jn-field" key={name}><span>{title}{opts.optional && <small>Optional</small>}</span><input name={name} value={fields[name] || ''} onChange={e => update(name, e.target.value)} type={type} required={!opts.optional} autoComplete={name === 'password' ? registration ? 'new-password' : 'current-password' : name === 'email' ? 'email' : name === 'phone' ? 'tel' : name === 'name' ? 'name' : 'off'} placeholder={opts.placeholder} max={opts.max} minLength={opts.minLength} /></label>;
+  const select = (name: string, title: string, options: [string, string][]) => <label className="jn-field" key={name}><span>{title}</span><select required value={fields[name] || ''} onChange={e => update(name, e.target.value)}>{!fields[name] && <option value="" disabled>Choose…</option>}{options.map(([value, text]) => <option key={value} value={value}>{text}</option>)}</select></label>;
+  const ageFrom = (dob: string) => { const t = new Date(); const d = new Date(dob); let a = t.getFullYear() - d.getFullYear(); if (t.getMonth() < d.getMonth() || (t.getMonth() === d.getMonth() && t.getDate() < d.getDate())) a--; return Number.isFinite(a) ? a : '—'; };
+  async function submit(e: FormEvent) {
+    e.preventDefault(); setError(''); setNotice('');
+    if (registration && step < steps.length - 1) { setStep(step + 1); return; }
+    setBusy(true);
+    try {
+      if (registration) {
+        if (!created) { const admission = Object.fromEntries(ADMISSION_KEYS.map(k => [k, fields[k] || ''])); if (fields.sameAddress === 'true') admission.currentAddress = fields.address || ''; await post('/api/auth/register', { ...fields, employer: fields.employer, emergencyContact: `${fields.emergencyName} (${fields.emergencyRelationship}) ${fields.emergencyPhone}`, admission, acceptRules: fields.agreed === 'true' }); setCreated(true); }
+        const documents: Record<string, string> = {};
+        if (files.resident) documents.residentDocumentId = (await upload(files.resident, 'resident_identity')).id;
+        if (files.guardian) documents.guardianDocumentId = (await upload(files.guardian, 'guardian_identity')).id;
+        for (const doc of EXTRA_DOCUMENTS) if (files[doc.key]) documents[doc.field] = (await upload(files[doc.key], doc.purpose)).id;
+        if (Object.keys(documents).length) await post('/api/auth/profile', documents);
+        router.replace('/portal');
+      } else if (mode === 'password') {
+        await post('/api/auth/login', { identifier: fields.identifier, password: fields.password }); router.replace('/portal');
+      } else if (!challenge) {
+        const result = await post('/api/auth/challenge', { purpose: mode === 'reset' ? 'reset_password' : 'login', identifier: fields.identifier, channel: 'email' }); setChallenge(result);
+      } else {
+        await post('/api/auth/verify', { challengeId: challenge.challengeId, code: fields.code, ...(mode === 'reset' ? { password: fields.newPassword } : {}) });
+        if (mode === 'reset') { setMode('password'); setChallenge(null); setNotice('Password updated. You can sign in now.'); } else router.replace('/portal');
+      }
+    } catch (err) { setError((err as Error).message); } finally { setBusy(false); }
+  }
+  async function demo(role: string) { setBusy(true); setError(''); try { await post('/api/auth/demo', { role }); router.replace('/portal'); } catch (e) { setError((e as Error).message); } finally { setBusy(false); } }
+  const steps = ['About you', 'Address & work', 'Emergency & guardian', 'Your stay', 'Documents', 'Secure account'];
+  return <div className="jn-auth-shell jn-portal-motion">
+    <aside className="jn-auth-story">
+      <Link href="/" className="jn-wordmark" aria-label="Ryuu home"><img src="/images/ryuu-house-logo.png" width="104" height="68" alt=""/><span>Ryuu<span className="jn-brand-dot" aria-hidden="true"/></span></Link>
+      <div className="jn-auth-story-content"><span className="jn-eyebrow">COOL ROOMS. CALM DAYS.</span><h1>Your next <br />chapter, <br /><em>at home.</em></h1><div className="jn-story-line"/><p>A peaceful place to live, learn, and make life your own. Your everyday at Ryuu starts here.</p><div className="jn-story-features"><span><Icon name="shield" size={16}/> Your own secure account</span><span><Icon name="home" size={16}/> Bengaluru, Karnataka</span></div></div>
+      <div className="jn-auth-story-bottom"><span>COOL ROOMS. CALM DAYS. YOUR CITY.</span><span>↗</span></div>
+      <div className="jn-auth-orbit" aria-hidden="true"><span/><span/><span/></div>
+    </aside>
+    <main className="jn-auth-main"><div className="jn-auth-top"><Link href="/" className="jn-back-link">← Back to Ryuu</Link><span>RESIDENT & GUARDIAN PORTAL</span></div>
+      <div className={`jn-auth-content ${registration ? 'jn-auth-wide' : ''}`}>
+        <div className="jn-auth-heading"><span className="jn-eyebrow">{registration ? 'MAKE YOURSELF AT HOME' : 'YOUR EVERYDAY, IN ONE PLACE'}</span><h2>{registration ? 'Join Ryuu.' : mode === 'reset' ? 'A fresh start.' : 'Welcome home.'}</h2><p>{registration ? 'A few details to begin your application. Admission is reviewed by our team.' : mode === 'reset' ? 'Verify your account to choose a new password.' : 'Sign in to your resident, guardian, or admin account.'}</p></div>
+        {registration ? <ol className="jn-form-steps">{steps.map((s, i) => <li className={i === step ? 'active' : i < step ? 'complete' : ''} key={s}><span>{i < step ? <Icon name="check" size={14}/> : `0${i + 1}`}</span>{s}</li>)}</ol> : <div className="jn-segmented">{(['password', 'otp'] as const).map(item => <button key={item} type="button" className={mode === item ? 'active' : ''} onClick={() => { setMode(item); update('channel', 'email'); setChallenge(null); setError(''); }}>{item === 'password' ? 'Password' : 'Email OTP'}</button>)}</div>}
+        {error && <div role="alert" className="jn-alert jn-alert-error">{error}{created && ' Your account was created; please retry the document upload or sign in to finish.'}</div>}
+        {notice && <div role="status" className="jn-alert jn-alert-success">{notice}</div>}
+        <form ref={formMotion} onSubmit={submit} className="jn-auth-form">
+          {registration ? <>
+            {step === 0 && <div className="jn-form-grid">{field('name', 'Full name', 'text', { placeholder: 'As shown on your identity document' })}{field('dob', 'Date of birth', 'date', { max: maxDob })}{select('maritalStatus', 'Marital status', [['single', 'Single'], ['married', 'Married']])}{field('nationality', 'Nationality')}{field('email', 'Email address', 'email', { placeholder: 'you@example.com' })}{field('phone', 'Mobile number', 'tel', { placeholder: '+91 9876543210' })}{select('idType', 'ID type', [['aadhaar', 'Aadhaar'], ['passport', 'Passport'], ['voter_id', 'Voter ID']])}{field('idNumber', fields.idType === 'passport' ? 'Passport number' : fields.idType === 'voter_id' ? 'Voter ID number' : 'Aadhaar number', 'text', { placeholder: fields.idType === 'aadhaar' ? '12 digits' : '' })}{field('intendedMoveIn', 'Expected date of joining', 'date')}<p className="jn-form-hint jn-span-2">{fields.dob ? <>Age: <strong>{ageFrom(fields.dob)}</strong>. </> : ''}Ryuu welcomes students and working men aged 18 and above. {fields.idType === 'aadhaar' ? 'We keep only the last 4 digits of your Aadhaar number.' : ''}</p></div>}
+            {step === 1 && <div className="jn-form-grid"><label className="jn-field jn-span-2"><span>Permanent address</span><textarea required rows={3} value={fields.address || ''} onChange={e => update('address', e.target.value)} placeholder="House number, street, area"/></label><label className="jn-checkbox jn-span-2"><input type="checkbox" checked={fields.sameAddress === 'true'} onChange={e => update('sameAddress', String(e.target.checked))}/><span>My current address is the same</span></label>{fields.sameAddress !== 'true' && <label className="jn-field jn-span-2"><span>Current address</span><textarea required rows={3} value={fields.currentAddress || ''} onChange={e => update('currentAddress', e.target.value)} placeholder="Where you live now"/></label>}{field('city', 'City')}{field('state', 'State')}{field('pincode', 'PIN code', 'text', { placeholder: '6 digits' })}<label className="jn-field"><span>I am a</span><select value={fields.profession} onChange={e => update('profession', e.target.value)}><option value="student">Student</option><option value="working">Working professional</option></select></label>{field('employer', fields.profession === 'student' ? 'College / institution' : 'Company / organisation name')}{field('designation', fields.profession === 'student' ? 'Course and year' : 'Designation')}<label className="jn-field jn-span-2"><span>{fields.profession === 'student' ? 'College address' : 'Office address'}<small>Optional</small></span><textarea rows={2} value={fields.officeAddress || ''} onChange={e => update('officeAddress', e.target.value)}/></label>{field('officeContact', fields.profession === 'student' ? 'College contact number' : 'Office contact number', 'tel', { optional: true })}{fields.profession === 'working' && field('monthlyIncome', 'Monthly income (₹)', 'text', { optional: true, placeholder: 'For example 35000' })}</div>}
+            {step === 2 && <div className="jn-form-grid"><h3 className="jn-form-subhead jn-span-2">Emergency contact</h3>{field('emergencyName', 'Name')}{field('emergencyRelationship', 'Relationship')}{field('emergencyPhone', 'Mobile number', 'tel')}<label className="jn-field jn-span-2"><span>Address</span><textarea required rows={2} value={fields.emergencyAddress || ''} onChange={e => update('emergencyAddress', e.target.value)}/></label><h3 className="jn-form-subhead jn-span-2">Your guardian</h3>{field('guardianName', 'Guardian’s full name')}<label className="jn-field"><span>Relationship</span><select value={fields.guardianRelationship} onChange={e => update('guardianRelationship', e.target.value)}><option>Parent</option><option>Sibling</option><option>Spouse</option><option>Relative</option><option>Other guardian</option></select></label>{field('guardianPhone', 'Guardian’s mobile number', 'tel')}{field('guardianEmail', 'Guardian’s email', 'email')}{field('guardianDob', 'Guardian’s date of birth', 'date', { max: new Date().toISOString().slice(0, 10) })}{field('guardianProfession', 'Guardian’s profession')}<div className="jn-inline-note jn-span-2"><Icon name="users"/><p>Your guardian receives a separate account to view attendance and outpasses. Their conversations with the admin team stay private.</p></div></div>}
+            {step === 3 && <div className="jn-form-grid">{select('acPreference', 'Air-conditioning', [['ac', 'AC (all rooms)']])}{select('roomType', 'Room type', [['double', 'Double sharing'], ['triple', 'Triple sharing'], ['four', 'Four sharing'], ['five', 'Five sharing']])}{select('stayDuration', 'Duration of stay', [['below_1_month', 'Below 1 month'], ['1_3_months', '1–3 months'], ['3_6_months', '3–6 months'], ['6_plus_months', '6+ months']])}{select('foodType', 'Food type', [['veg', 'Veg'], ['non_veg', 'Non-veg']])}{select('parking', 'Do you need parking?', [['none', 'No parking needed'], ['bike', 'Bike parking'], ['car', 'Car parking'], ['both', 'Bike and car parking']])}<p className="jn-form-hint jn-span-2">These are your preferences. The hostel team confirms your room and bed when they review your application.</p></div>}
+            {step === 4 && <><div className="jn-inline-note"><Icon name="shield"/><p>Documents are stored privately for admission review. Your photo and both identity documents are needed now; you can add the others later from About / My details.</p></div><div className="jn-form-grid">{(['resident', 'guardian'] as const).map(kind => <label className="jn-upload" key={kind}><Icon name="download" size={28}/><strong>{kind === 'resident' ? 'Your ID proof (Aadhaar / Passport / Voter ID)' : 'Guardian’s ID proof'}</strong><span>{files[kind]?.name || 'PDF · maximum 8 MB'}</span><input type="file" accept="application/pdf,.pdf" required={!files[kind]} onChange={e => { const file = e.target.files?.[0]; if (file) setFiles(f => ({ ...f, [kind]: file })); }} /></label>)}{EXTRA_DOCUMENTS.map(doc => <label className="jn-upload" key={doc.key}><Icon name="download" size={28}/><strong>{doc.title}{!doc.required && <small> · optional</small>}</strong><span>{files[doc.key]?.name || doc.hint + ' · maximum 8 MB'}</span><input type="file" accept={doc.accept} required={doc.required && !files[doc.key]} onChange={e => { const file = e.target.files?.[0]; if (file) setFiles(f => ({ ...f, [doc.key]: file })); }} /></label>)}</div></>}
+            {step === 5 && <><div className="jn-registration-summary"><div className="jn-avatar">{fields.name?.slice(0, 1) || 'J'}</div><div><strong>{fields.name}</strong><span>{fields.email} · {fields.phone}</span></div><button type="button" className="jn-text-button" onClick={() => setStep(0)}>Edit</button></div>{field('password', 'Create a password', 'password', { minLength: 12, placeholder: 'At least 12 characters' })}<label className="jn-checkbox"><input type="checkbox" required checked={fields.agreed === 'true'} onChange={e => update('agreed', String(e.target.checked))}/><span>I hereby declare that the information provided above is true to the best of my knowledge. I agree to abide by the hostel rules and regulations. I understand that any false information may lead to cancellation of admission. I consent to account verification and hostel notifications.</span></label><p className="jn-form-hint">Your bed is selected inside your account. Payment is requested only after admission approval.</p></>}
+          </> : <>
+            {!challenge ? <>{field('identifier', mode === 'password' ? 'Resident ID, email or phone' : 'Email address', mode === 'password' ? 'text' : 'email', { placeholder: mode === 'password' ? 'JN-2026-0001 or your email' : 'you@example.com' })}{mode === 'password' ? <>{field('password', 'Password', 'password')}<button type="button" className="jn-text-button jn-forgot" onClick={() => { setMode('reset'); setChallenge(null); }}>Forgot password?</button></> : <p className="jn-field-hint">A one-time code will be sent to your registered email address.</p>}</> : <><div className="jn-inline-note"><Icon name="shield"/><p>Enter the verification code for {fields.identifier}. {challenge.developmentCode && <strong className="jn-dev-code">Local simulation code: {challenge.developmentCode}</strong>}</p></div>{field('code', 'Verification code', 'text', { placeholder: '6-digit code' })}{mode === 'reset' && field('newPassword', 'New password', 'password', { minLength: 12 })}<button type="button" className="jn-text-button" onClick={() => setChallenge(null)}>Change contact details</button></>}
+          </>}
+          <div className="jn-auth-actions">{registration && step > 0 && <button type="button" className="jn-button secondary" onClick={() => setStep(step - 1)} disabled={busy}>Back</button>}<button className="jn-button primary" disabled={busy} type="submit">{busy ? 'One moment…' : registration ? step === steps.length - 1 ? created ? 'Finish document upload' : 'Create my account' : 'Continue' : mode === 'password' ? 'Sign in' : !challenge ? 'Send code' : mode === 'reset' ? 'Update password' : 'Verify & sign in'}<Icon name="arrow" size={18}/></button></div>
+        </form>
+        <div className="jn-auth-switch">{registration ? <>Already part of Ryuu? <Link href="/login">Sign in ↗</Link></> : <>Looking for your new home? <Link href="/register">Apply to Ryuu ↗</Link></>}</div>
+        {!registration && demoEnabled && <div className="jn-demo-access"><span>EXPLORE THE LOCAL DEMO</span><div>{['resident', 'admin', 'guardian'].map(role => <button type="button" disabled={busy} onClick={() => demo(role)} key={role}>{role}<Icon name="up" size={14}/></button>)}</div><p>Synthetic accounts. Verification codes are simulated; phone alerts require setup and permission.</p></div>}
+      </div><footer className="jn-auth-footer"><span>© {new Date().getFullYear()} Ryuu</span><span>Made for your everyday.</span></footer>
+    </main>
+  </div>;
+}

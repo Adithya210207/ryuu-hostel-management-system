@@ -1,0 +1,36 @@
+.sites-runtime/
+*.tar.gz
+*.tar
+node_modules/
+.next/
+.data/
+.npm-cache/
+.env
+.env.local
+.env.production
+.env.*.local
+*.tsbuildinfo
+backups/
+test-results/
+update-intro.cjs
+refine.cjs
+.tools/
+
+# Private notes and hosting ids (not for GitHub)
+chatgpt.md
+.openai/
+.claude/
+
+# Image originals (large; the web versions are in public/images/photos)
+Image assets/
+
+# Owner-supplied branding: logo and building render belong to the hostel owner
+public/images/ryuu-logo.png
+public/images/ryuu-logo.webp
+public/images/ryuu-logo-source.png
+public/images/ryuu-house-logo.png
+public/images/ryuu-exterior.png
+public/images/ryuu-exterior.webp
+
+# Third-party TTS voice samples (not needed to run)
+voice samples/
