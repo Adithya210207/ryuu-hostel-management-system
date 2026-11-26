@@ -157,7 +157,7 @@ export default function HomepageSequences({ paused, imageSources = {} }: { pause
     </section>
 
     <section className="jn-sequence-gallery" id="jn-nest-gallery" aria-labelledby="jn-gallery-title">
-      <header className="jn-sequence-heading"><span>A GLIMPSE OF WHAT’S TO COME</span><h2 id="jn-gallery-title">Life, at Ryuu.</h2><p>Space to settle in. Company to share a meal with.<br/>Quiet moments to make your own.</p><small>Architectural render and illustrative interiors. Actual photographs coming before launch.</small></header>
+      <header className="jn-sequence-heading"><span>A GLIMPSE OF WHAT’S TO COME</span><h2 id="jn-gallery-title">Life, at Ryuu.</h2><p>Space to settle in. Company to share a meal with.<br/>Quiet moments to make your own.</p><small>AI-generated building concept and illustrative interiors. Actual photographs coming before launch.</small></header>
       <div className="jn-sequence-zoom-run"><div className="jn-zoom-sticky">{pictures.map((picture, i) => <div className={`jn-zoom-layer jn-zoom-layer-${i}`} key={i} aria-hidden={i > 3 || undefined}><figure><img src={photo(picture.src)} alt={picture.alt} loading="lazy" decoding="async"/>{i === 0 && <figcaption><span>RYUU</span><strong>A little closer<br/>to home.</strong><span>PROPOSED EXTERIOR · ARCHITECTURAL RENDER</span></figcaption>}</figure></div>)}<a className="jn-zoom-link" href="#rooms">Explore rooms <Icon name="arrow"/></a></div></div>
     </section>
 

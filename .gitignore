@@ -24,13 +24,10 @@ chatgpt.md
 # Image originals (large; the web versions are in public/images/photos)
 Image assets/
 
-# Owner-supplied branding: logo and building render belong to the hostel owner
+# Large originals of the brand images (the site uses ryuu-house-logo.png, ryuu-logo.webp and ryuu-exterior.webp)
 public/images/ryuu-logo.png
-public/images/ryuu-logo.webp
 public/images/ryuu-logo-source.png
-public/images/ryuu-house-logo.png
 public/images/ryuu-exterior.png
-public/images/ryuu-exterior.webp
 
 # Third-party TTS voice samples (not needed to run)
 voice samples/

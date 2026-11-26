@@ -31,9 +31,9 @@ Ryuu is a complete web system for a single men's hostel in Bengaluru: a public w
 
 **[ryuu-hostel-demo.vercel.app](https://ryuu-hostel-demo.vercel.app)**: open *Sign in* and pick the **Resident**, **Admin** or **Guardian** demo account.
 
-- It's a **showcase**: synthetic rooms and people, simulated emails and payments, file uploads switched off, placeholder logo.
+- It's a **showcase**: synthetic rooms and people, simulated emails and payments, file uploads switched off.
 - Hosted free on **Vercel** (Hobby plan, Singapore) with a free **Neon** PostgreSQL database. It updates automatically on every push to `main`.
-- Runs with `SHOWCASE_MODE=true`, `DEMO_MODE=true` and `NEXT_PUBLIC_OWNER_BRANDING=false`. A real launch never uses showcase mode: it follows [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), and the production check refuses to start while `SHOWCASE_MODE` is on.
+- Runs with `SHOWCASE_MODE=true`, `DEMO_MODE=true` and `NEXT_PUBLIC_OWNER_BRANDING=true`. A real launch never uses showcase mode: it follows [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), and the production check refuses to start while `SHOWCASE_MODE` is on.
 
 ---
 
@@ -101,7 +101,7 @@ Open **http://127.0.0.1:4174**. On Windows you can also double-click **`Launch R
 | `Launch Ryuu.bat` (`npm run dev:phone`) | Preview on your phone over the same trusted Wi-Fi |
 | `Launch Ryuu HTTPS Test.bat` | A private HTTPS test link through a Cloudflare quick tunnel, protected by a one-time key gate, with separate demo data |
 
-> 💡 The hostel's own logo and building render are **not in this repository** (they belong to the hostel owner). Put them in `public/images/` as `ryuu-house-logo.png`, `ryuu-logo.webp` and `ryuu-exterior.webp` to see the full design.
+> 💡 The Ryuu logo and building image are in `public/images/` (`ryuu-house-logo.png`, `ryuu-logo.webp`, `ryuu-exterior.webp`) and show when `NEXT_PUBLIC_OWNER_BRANDING=true`. Set it to `false` to use neutral placeholders instead.
 
 ---
 
@@ -167,8 +167,8 @@ The hostel's data lives in one versioned PostgreSQL JSONB record with a row lock
 - **Homepage Version 2:** adapted from the **Onda** template by 8B, MIT licence ([ONDA-LICENSE.txt](public/site/ONDA-LICENSE.txt)). Its photos come from Unsplash ([ONDA-CREDITS.md](public/site/ONDA-CREDITS.md)).
 - **Animation reference:** [Syahril Arfian Almazril](https://www.syahrilarfianalmazril.my.id/), credited in the site footer.
 - **Font:** Inter, SIL Open Font License.
-- **Concept pictures:** generated for this project and labelled as concepts on the site. See [public/images/ASSETS.md](public/images/ASSETS.md).
-- **Hostel logo and building render:** belong to the hostel owner; not included here.
+- **Concept pictures:** AI-generated for this project and labelled as concepts on the site. See [public/images/ASSETS.md](public/images/ASSETS.md).
+- **Ryuu logo and building image:** AI-generated for this project, like the interior concepts. The building is a concept, not a photo of a real property.
 - **Libraries:** Next.js, React, PGlite, PostgreSQL, ExcelJS, PDFKit, Nodemailer, Lucide, each under its own licence.
 
 ---
@@ -191,7 +191,7 @@ If you would like to use any part of this project, please contact me first for p
 
 The full legal terms are in the [**LICENSE**](LICENSE) file.
 
-> Third-party parts keep their own owners and licences: the hostel's logo and building render (the hostel owner), the Onda template (MIT), Unsplash photos, the Inter font (SIL OFL) and the npm libraries. See **Credits & licences** above.
+> Third-party parts keep their own owners and licences: the Onda template (MIT), Unsplash photos, the Inter font (SIL OFL) and the npm libraries. See **Credits & licences** above.
 
 <div align="center">
 

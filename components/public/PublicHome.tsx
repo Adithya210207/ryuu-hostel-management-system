@@ -28,7 +28,7 @@ const faq = [
   { title: "What are the room options?", answer: "Rooms are primarily three-sharing and four-sharing, with AC, an attached bathroom and a personal wardrobe. Final room inventory and prices will be set by the hostel team." },
   { title: "How does admission work?", answer: "Create an account, verify your contacts and select your preferred bed. An admin reviews your application. Once approved, submit your first month’s rent and refundable deposit details within 48 hours. Your booking is confirmed after payment verification." },
   { title: "Can I choose my meals?", answer: "Active residents can select breakfast, lunch and dinner for the next day through their account. The form opens at 6 PM and closes at 11 PM, with reminders at 9 PM and 10 PM. Meal plans and prices will be confirmed by the hostel team." },
-  { title: "When will Ryuu open?", answer: "Our opening date is yet to be announced. The building shown here is an architectural render, and the interior images are illustrative concepts. We’ll replace these with actual photographs before launch." },
+  { title: "When will Ryuu open?", answer: "Our opening date is yet to be announced. The building shown here is an AI-generated concept image, and the interior images are illustrative concepts. We’ll replace these with actual photographs before launch." },
 ];
 
 const clamp = (n: number, min = 0, max = 1) => Math.min(max, Math.max(min, n));

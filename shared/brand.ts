@@ -6,6 +6,6 @@ export const BRAND = {
   houseLogo: owner ? '/images/ryuu-house-logo.png' : '/images/placeholder/house-logo.png',
   wordmark: owner ? '/images/ryuu-logo.webp' : '/images/placeholder/wordmark.png',
   exterior: owner ? '/images/ryuu-exterior.webp' : '/images/photos/inside-balcony.webp',
-  exteriorAlt: owner ? 'Proposed Ryuu building, architectural render' : 'Concept illustration of a hostel balcony',
-  exteriorCaption: owner ? 'Proposed exterior · Architectural render' : 'Concept illustration',
+  exteriorAlt: owner ? 'AI-generated concept image of the Ryuu building' : 'Concept illustration of a hostel balcony',
+  exteriorCaption: owner ? 'Building concept · AI-generated' : 'Concept illustration',
 };

@@ -4,7 +4,7 @@ The supplied `ryuu-house-logo.png` (104×68, 11 October 2026) replaces only the 
 
 On 11 October 2026, WebP derivatives of the logo, exterior and three concept PNGs were generated at quality 82, preserving dimensions and originals. Homepage references now use these smaller files. In the protected development tunnel only, the six public photos are embedded in the homepage to avoid delayed image requests being redirected to the interactive Cloudflare login. Production retains ordinary WebP URLs.
 
-The logo and exterior render were provided by the hostel owner. The exterior is an architectural proposal, not a completed-building photograph.
+The logo and the exterior image are AI-generated for this project. The exterior is a concept image, not a photograph of a real building.
 
 The three `*-concept.png` assets were created with the built-in image generation tool on 16 September 2026. They are fictional illustrative placeholders, not property photographs. The homepage explicitly labels them and they must be replaced with actual photos before launch. Keep filenames or update the gallery entries in `components/public/PublicHome.tsx` when replacing them.
 

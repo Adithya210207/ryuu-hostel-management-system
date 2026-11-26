@@ -5,7 +5,8 @@ Copyright (c) 2026 Adithya V. All Rights Reserved.
 This repository and everything in it that was created by the copyright holder
 (the "Work") — including the website and portal source code, the server and
 business rules, the database design, the scripts and tests, the deployment
-files, the page designs and animations, the generated concept images, the
+files, the page designs and animations, the Ryuu logo, the AI-generated building
+concept and interior concept images, the
 specification and the documentation — is the property of the copyright holder.
 
 1. PERMITTED USE
@@ -39,8 +40,6 @@ specification and the documentation — is the property of the copyright holder.
    The following belong to their own owners and remain under their own terms;
    nothing in this license grants or changes any rights in them:
 
-   - The "Ryuu" hostel logo and the architectural render of the building
-     belong to the hostel owner and are not included in this repository.
    - The Onda template by 8B (public/site/), licensed under the MIT License
      (see public/site/ONDA-LICENSE.txt); the photos it loads are under the
      Unsplash License (see public/site/ONDA-CREDITS.md).
