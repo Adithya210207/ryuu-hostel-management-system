@@ -29,11 +29,11 @@ Ryuu is a complete web system for a single men's hostel in Bengaluru: a public w
 
 ## 🌐 Live demo
 
-**[ryuu-hostel-demo.onrender.com](https://ryuu-hostel-demo.onrender.com)**: open *Sign in* and pick the **Resident**, **Admin** or **Guardian** demo account.
+**[ryuu-hostel-demo.vercel.app](https://ryuu-hostel-demo.vercel.app)**: open *Sign in* and pick the **Resident**, **Admin** or **Guardian** demo account.
 
 - It's a **showcase**: synthetic rooms and people, simulated emails and payments, file uploads switched off, placeholder logo.
-- It runs on Render's free plan with a free PostgreSQL database, so the first visit after a quiet spell can take about a minute to wake up. Free Render databases expire after 30 days; the demo then needs a new one.
-- Set up by [`render.yaml`](render.yaml) with `SHOWCASE_MODE=true`. A real launch never uses showcase mode: it follows [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), and the production check refuses to start while `SHOWCASE_MODE` is on.
+- Hosted free on **Vercel** (Hobby plan, Singapore) with a free **Neon** PostgreSQL database. It updates automatically on every push to `main`.
+- Runs with `SHOWCASE_MODE=true`, `DEMO_MODE=true` and `NEXT_PUBLIC_OWNER_BRANDING=false`. A real launch never uses showcase mode: it follows [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), and the production check refuses to start while `SHOWCASE_MODE` is on.
 
 ---
 
