@@ -5,6 +5,7 @@ import { promisify } from 'node:util';
 import path from 'node:path';
 import { db, dataDirectory, type SqlClient } from './db';
 import { HttpError } from './http';
+import { showcaseMode } from './config';
 import { securityAudit } from './auth';
 import type { DomainUser } from '../shared/domain';
 const execute=promisify(execFile);
@@ -30,6 +31,7 @@ export function detectMime(bytes:Buffer){
   throw new HttpError(400,'Upload a valid PDF, PNG, JPEG, or WebP file.');
 }
 export async function saveUpload(user:DomainUser,file:File,purposeInput:string){
+  if(showcaseMode())throw new HttpError(403,'File uploads are switched off in this public demo.');
   const purpose=canonicalPurpose(purposeInput);
   if(!purposes.includes(purpose))throw new HttpError(400,'Choose a supported document category.');
   if(purpose==='qr'&&user.role!=='admin')throw new HttpError(403,'Only admins can change the payment QR.');

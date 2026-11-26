@@ -1,0 +1,31 @@
+# Render Blueprint: the public SHOWCASE demo of Ryuu on Render's free plan.
+# Demo accounts, synthetic data, embedded database (resets on every restart), uploads off,
+# placeholder branding. A real launch uses docs/DEPLOYMENT.md instead (SHOWCASE_MODE must be off).
+services:
+  - type: web
+    name: ryuu-hostel-demo
+    runtime: node
+    plan: free
+    region: singapore
+    branch: main
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/status
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: PORT
+        value: "3000"
+      - key: SHOWCASE_MODE
+        value: "true"
+      - key: DEMO_MODE
+        value: "true"
+      - key: PHONEPE_SIMULATE
+        value: "true"
+      - key: NEXT_PUBLIC_OWNER_BRANDING
+        value: "false"
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      - key: APP_URL
+        value: https://ryuu-hostel-demo.onrender.com

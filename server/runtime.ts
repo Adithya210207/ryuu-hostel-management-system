@@ -1,6 +1,7 @@
 import {randomBytes} from 'node:crypto';
 import {db} from './db';
 import {createAccount,createSession,demoEnabled,getUser,listAccounts} from './auth';
+import {strictProduction} from './config';
 import {initializeDomain,seedDemo,runScheduledJobs,getSnapshot} from './domain';
 import type {DomainUser} from '../shared/domain';
 import {dispatchPush} from './push';
@@ -29,7 +30,7 @@ export async function ensureRuntime(){
     await initializeDomain();
     if(demoEnabled())await seedDevelopment();
     for(const account of await listAccounts())await getSnapshot(account);
-    if(process.env.NODE_ENV!=='production'&&!globals.ryuuTimer){
+    if(!strictProduction()&&!globals.ryuuTimer){
       globals.ryuuTimer=setInterval(()=>{void tick().catch(()=>console.error('[Ryuu] Local worker failed; check the health panel.'));},30_000);globals.ryuuTimer.unref();
     }
   })();

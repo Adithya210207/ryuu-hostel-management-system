@@ -6,11 +6,12 @@
 //   PHONEPE_WEBHOOK_USERNAME, PHONEPE_WEBHOOK_PASSWORD                  the username/password you set on the webhook
 //   PHONEPE_SIMULATE=true  local demo only: a fake checkout page so the flow can be tried without PhonePe keys
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
+import { strictProduction } from './config';
 
 export type PhonePeMode = 'off' | 'simulated' | 'sandbox' | 'production';
 export interface PhonePeStatus { state: 'PENDING' | 'COMPLETED' | 'FAILED'; amountPaise: number; orderId: string; transactionId: string; paymentMode: string; errorCode?: string }
 
-const demo = () => process.env.NODE_ENV !== 'production' && process.env.DEMO_MODE === 'true';
+const demo = () => !strictProduction() && process.env.DEMO_MODE === 'true';
 export function phonePeMode(): PhonePeMode {
   if (demo() && process.env.PHONEPE_SIMULATE === 'true') return 'simulated';
   if (!process.env.PHONEPE_CLIENT_ID || !process.env.PHONEPE_CLIENT_SECRET || !process.env.PHONEPE_CLIENT_VERSION) return 'off';

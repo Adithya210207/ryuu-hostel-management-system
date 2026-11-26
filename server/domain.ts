@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { db, type SqlClient } from './db';
+import { strictProduction } from './config';
 import { assertUpload } from './uploads';
 import {enqueuePush} from './push';
 import { DEFAULT_NON_VEG_DAYS, isNonVegDay, nonVegDays } from '../shared/domain';
@@ -57,10 +58,10 @@ export function createInitialState(now = new Date()): DomainState {
     monthlyRentPaise: null, depositPaise: null, dailyPenaltyPaise: null,
     food: { mode: 'not_configured', monthlyPaise: 0, breakfastPaise: 0, lunchPaise: 0, dinnerPaise: 0, nonVegDays: [...DEFAULT_NON_VEG_DAYS] },
     paymentUpi: '', bankName: '', accountName: '', accountNumber: '', ifsc: '', qrDocumentId: '', checkoutNoticeDays: null, identityPolicy: 'pending_review',
-    monthlyReminderDays: [1, 4, 5, 7, 15, 25], ticketCategories: ['Room / facilities', 'Food', 'Payment', 'Account / access', 'Other'], syntheticInventory: process.env.NODE_ENV!=='production',
+    monthlyReminderDays: [1, 4, 5, 7, 15, 25], ticketCategories: ['Room / facilities', 'Food', 'Payment', 'Account / access', 'Other'], syntheticInventory: !strictProduction(),
   };
   const rooms: Room[] = ['101', '102', '103', '201', '202', '203'].map((label, index) => ({ id: `room-${label}`, label, floor: label[0] === '1' ? 'First floor' : 'Second floor', sharing: [3, 4, 5][index % 3], rentPaise: null, ac: true, bathroom: true, synthetic: true, beds: Array.from({ length: [3, 4, 5][index % 3] }, (_, i) => ({ id: `bed-${label}-${i + 1}`, label: `${label}-${String.fromCharCode(65 + i)}`, status: 'available' })) }));
-  return { settings, rooms: process.env.NODE_ENV==='production'?[]:rooms, schemaVersion: 1, revision: 0, startedAt: now.toISOString(), actors: {}, counters: {}, eventKeys: {}, demo: false, residents: [], applications: [], bills: [], payments: [], meals: [], mealLocks: [], mealRequests: [], outpasses: [], attendance: [], deviceEvents: [], transfers: [], messages: [], tickets: [], notices: [], notifications: [], audit: [], checkoutRecords: [], deviceReconciliations: [], extras: emptyExtras() };
+  return { settings, rooms: strictProduction()?[]:rooms, schemaVersion: 1, revision: 0, startedAt: now.toISOString(), actors: {}, counters: {}, eventKeys: {}, demo: false, residents: [], applications: [], bills: [], payments: [], meals: [], mealLocks: [], mealRequests: [], outpasses: [], attendance: [], deviceEvents: [], transfers: [], messages: [], tickets: [], notices: [], notifications: [], audit: [], checkoutRecords: [], deviceReconciliations: [], extras: emptyExtras() };
 }
 // Preserve legacy delivery history, but never retry routine alerts on WhatsApp.
 function cancelLegacyNotificationDelivery(state: DomainState): boolean {
@@ -82,7 +83,7 @@ export async function initializeDomain(): Promise<void> {
     await db.transaction(async tx => {
       const { rows } = await tx.query('SELECT data FROM domain_state WHERE id=1 FOR UPDATE');
       const state: DomainState = typeof rows[0].data === 'string' ? JSON.parse(rows[0].data) : rows[0].data;
-      if(process.env.NODE_ENV==='production'&&(state.demo||state.rooms.some(r=>r.synthetic)||state.residents.some(r=>r.synthetic)))throw new Error('Production refuses demo records and illustrative rooms. Use a clean production database.');
+      if(strictProduction()&&(state.demo||state.rooms.some(r=>r.synthetic)||state.residents.some(r=>r.synthetic)))throw new Error('Production refuses demo records and illustrative rooms. Use a clean production database.');
       const contactUpdated = false;
       if (cancelLegacyNotificationDelivery(state) || contactUpdated) {
         state.revision++;
@@ -552,7 +553,7 @@ export async function recordDeviceEvent(event: { id: string; residentId: string;
   });
 }
 export async function seedDemo(users: DomainUser[]): Promise<void> {
-  requireThat(process.env.NODE_ENV !== 'production' && process.env.DEMO_MODE === 'true', 'Demo seeding requires DEMO_MODE=true and is disabled in production.', 403);
+  requireThat(!strictProduction() && process.env.DEMO_MODE === 'true', 'Demo seeding requires DEMO_MODE=true and is disabled in production.', 403);
   await mutate(state => {
     if (state.demo || state.residents.length) return; const now = new Date(), today = businessDate(now); state.demo = true; for (const user of users) state.actors[user.id] = { ...user, emailVerified: true, phoneVerified: true };
     Object.assign(state.settings, { monthlyRentPaise: 850000, depositPaise: 1500000, dailyPenaltyPaise: 5000 }); state.settings.food = { mode: 'included', monthlyPaise: 0, breakfastPaise: 0, lunchPaise: 0, dinnerPaise: 0 };

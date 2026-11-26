@@ -1,6 +1,7 @@
 import {productionConfigIssues} from '../server/config';
 import {db} from '../server/db';
 async function main(){
+ if(process.env.SHOWCASE_MODE==='true'){console.log('Showcase mode: public demo with synthetic data, embedded database and uploads off. Production launch checks are skipped.');return;}
  Object.assign(process.env,{NODE_ENV:'production'});
  const issues=productionConfigIssues();
  if(issues.length){console.error('Production configuration is incomplete:\n'+issues.map(s=>`- ${s}`).join('\n'));process.exitCode=1;return;}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, type FormEvent } from 'react';
+import { BRAND } from '../../shared/brand';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Icon from './Icon';
@@ -62,7 +63,7 @@ export default function Auth({ registration = false, demoEnabled = false }: { re
   const steps = ['About you', 'Address & work', 'Emergency & guardian', 'Your stay', 'Documents', 'Secure account'];
   return <div className="jn-auth-shell jn-portal-motion">
     <aside className="jn-auth-story">
-      <Link href="/" className="jn-wordmark" aria-label="Ryuu home"><img src="/images/ryuu-house-logo.png" width="104" height="68" alt=""/><span>Ryuu<span className="jn-brand-dot" aria-hidden="true"/></span></Link>
+      <Link href="/" className="jn-wordmark" aria-label="Ryuu home"><img src={BRAND.houseLogo} width="104" height="68" alt=""/><span>Ryuu<span className="jn-brand-dot" aria-hidden="true"/></span></Link>
       <div className="jn-auth-story-content"><span className="jn-eyebrow">COOL ROOMS. CALM DAYS.</span><h1>Your next <br />chapter, <br /><em>at home.</em></h1><div className="jn-story-line"/><p>A peaceful place to live, learn, and make life your own. Your everyday at Ryuu starts here.</p><div className="jn-story-features"><span><Icon name="shield" size={16}/> Your own secure account</span><span><Icon name="home" size={16}/> Bengaluru, Karnataka</span></div></div>
       <div className="jn-auth-story-bottom"><span>COOL ROOMS. CALM DAYS. YOUR CITY.</span><span>↗</span></div>
       <div className="jn-auth-orbit" aria-hidden="true"><span/><span/><span/></div>

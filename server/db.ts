@@ -1,6 +1,6 @@
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import {assertProductionConfig} from './config';
+import {assertProductionConfig,strictProduction} from './config';
 
 export type QueryResult<T = any> = { rows: T[]; rowCount?: number | null };
 export interface SqlClient { query<T = any>(sql: string, params?: any[]): Promise<QueryResult<T>> }
@@ -79,7 +79,7 @@ async function connect(): Promise<Database> {
       }, close: () => pool.end()
     };
   } else {
-    if (process.env.NODE_ENV === 'production' && process.env.ALLOW_DEV_DATABASE !== 'true') throw new Error('DATABASE_URL is required in production.');
+    if (strictProduction() && process.env.ALLOW_DEV_DATABASE !== 'true') throw new Error('DATABASE_URL is required in production.');
     const { PGlite } = await import('@electric-sql/pglite');
     await mkdir(dataDirectory(), { recursive: true });
     const pg = new PGlite(process.env.TEST_DATABASE === 'memory' ? undefined : path.join(dataDirectory(), 'postgres'));

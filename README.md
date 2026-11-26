@@ -27,6 +27,16 @@ Ryuu is a complete web system for a single men's hostel in Bengaluru: a public w
 
 ---
 
+## 🌐 Live demo
+
+**[ryuu-hostel-demo.onrender.com](https://ryuu-hostel-demo.onrender.com)**: open *Sign in* and pick the **Resident**, **Admin** or **Guardian** demo account.
+
+- It's a **showcase**: synthetic rooms and people, simulated emails and payments, file uploads switched off, placeholder logo.
+- It runs on Render's free plan, so the first visit after a quiet spell can take about a minute to wake up, and demo data resets when it restarts.
+- Set up by [`render.yaml`](render.yaml) with `SHOWCASE_MODE=true`. A real launch never uses showcase mode: it follows [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), and the production check refuses to start while `SHOWCASE_MODE` is on.
+
+---
+
 ## 🧩 Two homepages
 
 | | **Version 1** (`/classic`) | **Version 2** ⭐ (`/`) |
@@ -103,7 +113,7 @@ npm test
 npm run build
 ```
 
-- **53 automated tests** pass, plus type checking and the production build: account and role isolation, contact verification, admissions, payments, attendance and outpasses, provider limits, notification queues, deployment guards and backup integrity.
+- **65 automated tests** pass, plus type checking and the production build: account and role isolation, contact verification, admissions, payments, attendance and outpasses, provider limits, notification queues, deployment guards and backup integrity.
 - With the demo running, `node scripts/http-check.ts` and `node scripts/admission-check.ts` test the real API flows.
 - The admin **System health** page runs isolated checks against an in-memory database.
 - `npm run check:production` lists anything missing before a real launch.
@@ -144,7 +154,7 @@ Ryuu_Hostel_Management_System\
 │   └── uploads.ts           ← encrypted private files
 ├── shared\domain.ts         ← the API contract shared by server and pages
 ├── scripts\                 ← worker, backup, bootstrap, previews, checks
-├── tests\                   ← 53 automated tests
+├── tests\                   ← 65 automated tests
 └── docs\ · deploy\          ← deployment guides and server configs
 ```
 

@@ -5,12 +5,12 @@ import { db, type SqlClient } from './db';
 import { HttpError } from './http';
 import { deliverCode, deliverPhoneVerification } from './providers';
 import { welcomeGuardian, welcomeResident } from './welcome';
-import {registrationOpen} from './config';
+import {registrationOpen,strictProduction} from './config';
 import type { DomainUser } from '../shared/domain';
 
 const scrypt = promisify(scryptCallback);
 export const SESSION_COOKIE = process.env.NODE_ENV==='production'?'__Host-ryuu_session':'ryuu_session';
-export const demoEnabled = () => process.env.NODE_ENV !== 'production' && process.env.DEMO_MODE === 'true';
+export const demoEnabled = () => !strictProduction() && process.env.DEMO_MODE === 'true';
 const digest = (s: string) => createHash('sha256').update(s).digest('hex');
 export function normalizePhone(value: string) { const digits = value.replace(/\D/g, ''); return digits.length === 10 ? `+91${digits}` : `+${digits}`; }
 export async function hashPassword(password: string) {

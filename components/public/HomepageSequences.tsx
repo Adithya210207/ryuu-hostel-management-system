@@ -1,5 +1,6 @@
 'use client';
 
+import { BRAND } from '../../shared/brand';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import Icon from './Icons';
@@ -8,11 +9,11 @@ import './homepage-sequences.css';
 const steps = [
   { title: 'Say hello.', label: '01 / YOUR APPLICATION', text: 'Create your resident account and verify your email and phone. Add your details, guardian and admission documents.', image: '/images/quiet-corner-concept.webp' },
   { title: 'Find your space.', label: '02 / ROOM & BED', text: 'Explore the room layout and choose your preferred bed. Three- and four-sharing rooms, with AC and an attached bathroom.', image: '/images/room-concept.webp' },
-  { title: 'Make it official.', label: '03 / ADMISSION REVIEW', text: 'The hostel team reviews your application and confirms admission. Then submit your first rent and deposit payment details within 48 hours.', image: '/images/ryuu-exterior.webp' },
+  { title: 'Make it official.', label: '03 / ADMISSION REVIEW', text: 'The hostel team reviews your application and confirms admission. Then submit your first rent and deposit payment details within 48 hours.', image: BRAND.exterior },
   { title: 'Make yourself at home.', label: '04 / YOUR NEW CHAPTER', text: 'After payment verification and check-in, manage meals, monthly payments, outpasses and messages through your account.', image: '/images/dining-concept.webp' },
 ];
 const pictures = [
-  { src: '/images/ryuu-exterior.webp', alt: 'Proposed Ryuu building, architectural render', zoom: 4 },
+  { src: BRAND.exterior, alt: BRAND.exteriorAlt, zoom: 4 },
   { src: '/images/dining-concept.webp', alt: 'Illustrative shared dining space', zoom: 5 },
   { src: '/images/quiet-corner-concept.webp', alt: 'Illustrative peaceful reading corner', zoom: 6 },
   { src: '/images/room-concept.webp', alt: 'Illustrative three-sharing room', zoom: 5 },
